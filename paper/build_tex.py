@@ -23,7 +23,7 @@ body = "".join(re.sub("[" + "".join(plain) + "]", lambda m: plain[m.group()], p)
 open("_body.md", "w", encoding="utf8").write(body)
 tex = subprocess.run(["pandoc", "_body.md", "-f", "markdown-auto_identifiers-implicit_figures", "-t", "latex", "--number-sections", "--shift-heading-level-by=-1"], capture_output=True, text=True, check=True).stdout
 os.remove("_body.md")
-tex = re.sub(r"(?ms)^(\\textbf\{(?:Table|Figure) \d+\..*?)\n\n", r"\\begin{center}\\small \1\\end{center}\n\n", tex)   # table captions
+tex = re.sub(r"(?ms)^(\\textbf\{(?:Table|Figure) \d+\..*?)\n\n", r"\\needspace{7\\baselineskip}\\begin{center}\\small \1\\end{center}\n\n", tex)   # captions, kept on the page of what they describe
 tex = tex.replace(r"\pandocbounded{\includegraphics", r"\begin{center}\pandocbounded{\includegraphics").replace(".png}}", ".png}}\\end{center}")
 tex = tex.replace(r"\begin{verbatim}", r"\begin{Verbatim}[breaklines,fontsize=\footnotesize]").replace(r"\end{verbatim}", r"\end{Verbatim}")
 EQ = {  # the formulas are plain text in the markdown; set them as mathematics here
@@ -41,7 +41,7 @@ tex = tex.replace(r"\section{References}", r"\section*{References}\small\raggedr
 abs_tex = subprocess.run(["pandoc", "-f", "markdown", "-t", "latex"], input=tex_chars(abstract), capture_output=True, text=True, check=True).stdout
 doc = r"""\documentclass[10pt,a4paper]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{fontspec,amsmath,amssymb,graphicx,longtable,booktabs,array,calc,microtype,xurl,fvextra}
+\usepackage{fontspec,amsmath,amssymb,graphicx,longtable,booktabs,array,calc,microtype,xurl,fvextra,needspace}
 \usepackage[hidelinks]{hyperref}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \makeatletter\newsavebox\pandoc@box

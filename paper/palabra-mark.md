@@ -6,7 +6,7 @@
 
 ## Abstract
 
-AI voice agents now place phone calls on behalf of people, and nothing in a call lets the answering side check who the agent speaks for: caller ID can be spoofed and a voice can be cloned. In Palabra the caller registers a signed call intent before dialling, and the speech of the call carries a near-inaudible mark derived from a per-call secret. The receiver looks the intent up and asks one question of the audio: does it carry this call's code? The mark is therefore a zero-bit watermark, and the answer is a score that grows as the caller talks. The mark adds no signal. It shifts the loudness of 32 ms by 190 Hz tiles of the voice by up to 5 dB in a keyed checkerboard, changing only what speech codecs keep. At a pass mark where the false-alarm probability per wrong code is provably below 1.1 × 10⁻⁷, it was verified within 5 seconds on every held-out recording through AMR 12.2, AMR-WB 12.65 and Opus 12 kbit/s, and within 3 seconds through G.711. The hardest lines (AMR 4.75, Opus 6 kbit/s) needed 5 to 8 seconds and missed 8% of calls. No wrong code passed in more than 400,000 trials. A small neural network in the detector, which never sees the code and so cannot weaken the bound, cuts the median time to verify by about 40%; it runs as the call arrives, uses no audio from the future, and costs 3 ms of processor time per second of audio. AudioSeal, a leading neural watermark, fails on most of the same calls below about 8 kbit/s. A streaming detector that never delays the call verified all 82 marked greetings on live calls over the public phone network, 76 of them within 3 seconds, and rejected unmarked greetings, marks registered by another caller and replays. Mean PESQ-WB was 4.44, and four listeners reported no artefacts on more than 50 calls.
+AI voice agents now place phone calls on behalf of people, and nothing in a call lets the answering side check who the agent speaks for: caller ID can be spoofed and a voice can be cloned. In Palabra the caller registers a signed call intent before dialling, and the speech of the call carries a near-inaudible mark derived from a per-call secret. The receiver looks the intent up and asks one question of the audio: does it carry this call's code? The mark is therefore a zero-bit watermark, and the answer is a score that grows as the caller talks. The mark adds no signal. It shifts the loudness of 32 ms by 190 Hz tiles of the voice by up to 5 dB in a keyed checkerboard, changing only what speech codecs keep. At a pass mark where the false-alarm probability per wrong code is provably below 1.1 × 10⁻⁷, it was verified within 5 seconds on every held-out recording through AMR 12.2, AMR-WB 12.65 and Opus 12 kbit/s, and within 3 seconds through G.711. The hardest lines (AMR 4.75, Opus 6 kbit/s) needed 5 to 8 seconds and missed 8% of calls. No wrong code passed in more than 400,000 trials. A small neural network in the detector, which never sees the code and so cannot weaken the bound, cuts the median time to verify by about 40%; it runs as the call arrives, uses no audio from the future, and costs 3 ms of processor time per second of audio. On the audio of the live calls it verified 78 of 82 marked greetings with at most 2 seconds of speech, against 56 without it. AudioSeal, a leading neural watermark, fails on most of the same calls below about 8 kbit/s. A streaming detector that never delays the call verified all 82 marked greetings on live calls over the public phone network, 76 of them within 3 seconds, and rejected unmarked greetings, marks registered by another caller and replays. Mean PESQ-WB was 4.44, and four listeners reported no artefacts on more than 50 calls.
 
 ## 1. The problem
 
@@ -420,7 +420,24 @@ Three things follow. Size matters little: the large network has 27 times the par
 
 In 331,800 wrong-code trials per configuration, the highest score was 5.54 for the small network in one pass and 5.59 for the medium one in two; over all ten configurations of Table 15 one trial reached 6 (6.03, large network) and none reached 7.
 
-These results are on files sent through software codecs. The streaming networks have not yet been run on live calls or added to the packaged engine, and they search starts in the first 1.2 s of the audio as the whole-file detector does.
+**On the live calls.** Tables 14 and 15 are on files sent through software codecs, with starts searched in the first 1.2 s. We therefore ran the small network, in one pass, as a tap would run it, on the audio the detector received during the 104 live calls of Section 6.9: frame by frame at 8 kHz, with the streaming scorer of Section 6.8, every start in the first 10 s, and the pass mark of 7. The network was not trained on any audio from a phone network.
+
+**Table 16. The audio of the live calls of Section 6.9, scored with the analytic votes and with the small network. Speech heard is the length of mark the scorer needed.**
+
+| | Analytic votes | Small network |
+|----------------------|-----------|-----------|
+| Marked greetings verified (82) | 82 | 82 |
+| Verified with at most 2 s of speech heard | 56 | 78 |
+| Verified with at most 3 s of speech heard | 74 | 81 |
+| Median speech heard | 1.54 s | 1.28 s |
+| Most speech any call needed | 7.2 s | 4.1 s |
+| Unmarked greetings verified (12) | 0; highest score 4.33 | 0; highest score 4.24 |
+| Marks registered by another caller verified (4) | 0; highest score 3.59 | 0; highest score 4.18 |
+| Highest score in 20,800 wrong-code trials | 5.42 | 5.99 |
+
+The gain seen on simulated lines holds on real ones. Counting the 64 ms the network waits, 71 of the 82 marked calls verified sooner than with the analytic votes, by a median of 0.45 s over all 82, and the other 11 verified up to 64 ms later: these are calls that already passed at the first or second check, where better votes cannot help and the wait is all that shows. The six replayed recordings carry a genuine mark and pass with either detector; it is the single use of a registration that rejects them (Section 6.9).
+
+The network was then ported to the verification service (59,066 weights and about 100 lines of TypeScript with no dependencies), where it replaces the analytic votes. Its votes agree with the PyTorch model to within 0.00002, it runs once per call however many registrations the call is checked against, and it uses about 40 ms of processor time per second of audio in JavaScript. This test replays what the live calls delivered; new calls placed with the network in the loop are the next step.
 
 ## 7. What shaped the design
 
@@ -440,7 +457,7 @@ All of this was decided on the tuning speakers.
 
 ## 8. Limitations
 
-- **Mostly simulated lines.** Tables 2 to 8 and 11 to 15 use software codecs on files. The live calls of Section 6.9 are 104 calls between one pair of US numbers with greetings of 4 to 8 seconds. Mobile handsets, international routes, packet loss, noise suppression and echo cancellation were not tested.
+- **Mostly simulated lines.** Tables 2 to 8 and 11 to 15 use software codecs on files, and Table 16 replays recorded calls. The live calls of Section 6.9 are 104 calls between one pair of US numbers with greetings of 4 to 8 seconds. Mobile handsets, international routes, packet loss, noise suppression and echo cancellation were not tested.
 - **Timing slips.** Live lines shift the audio in time (Section 6.9). The detector tolerates small steps and one large one; a gradual stretch still defeats it.
 - **Codecs not covered.** G.729 was not tested, nor the super-wideband modes of EVS. The mark uses only the narrowband part of a wideband call.
 - **Listening was informal.** Four listeners heard more than 50 marked calls and reported no artefacts (Section 6.3). A blind comparison of marked against unmarked audio has not been run.
@@ -455,7 +472,7 @@ The mark already verifies a live call in one to two seconds, with a detector tha
 
 **More of the network.** Mobile handsets, international routes and lossy networks are next, together with a scorer that follows gradual timing drift and a blind listening test to set the margin. Wideband calls leave 3.4 to 7 kHz unused; a second set of tiles there would add votes per second and shorten the time to verify.
 
-**A faster mark.** The learned detector cut the time to verify by 40% and more with the embedder untouched, in a causal form cheap enough to run beside every call (Section 6.13). Putting it into the streaming engine and testing it on live calls comes first. Training the embedder with it, with the codecs in the loop [24], and embedding inside the speech generator instead of after it, should give more. For the lowest bitrates a second carrier on pitch [15] can be fused with the first, and an anytime-valid sequential test [19, 25] would lower the pass mark for the same guarantee.
+**A faster mark.** The learned detector cut the time to verify by 40% and more with the embedder untouched, in a causal form cheap enough to run beside every call, and the gain held on the audio of the live calls (Section 6.13). New live calls with the network in the loop come first. Training the embedder with it, with the codecs in the loop [24], and embedding inside the speech generator instead of after it, should give more. For the lowest bitrates a second carrier on pitch [15] can be fused with the first, and an anytime-valid sequential test [19, 25] would lower the pass mark for the same guarantee.
 
 **From the greeting to the whole call.** Section 6.11 shows that a marked call can be checked continuously. A nonce issued by the answering side when the call connects would turn that into proof of liveness, and telling the calling agent about every verification would expose a code used by anyone else. Looking registrations up by destination and time would cover calls whose caller ID is withheld.
 

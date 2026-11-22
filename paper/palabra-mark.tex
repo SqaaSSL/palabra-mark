@@ -1,6 +1,6 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{fontspec,amsmath,amssymb,graphicx,longtable,booktabs,array,calc,microtype,xurl,fvextra}
+\usepackage{fontspec,amsmath,amssymb,graphicx,longtable,booktabs,array,calc,microtype,xurl,fvextra,needspace}
 \usepackage[hidelinks]{hyperref}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \makeatletter\newsavebox\pandoc@box
@@ -35,10 +35,12 @@ code passed in more than 400,000 trials. A small neural network in the
 detector, which never sees the code and so cannot weaken the bound, cuts
 the median time to verify by about 40\%; it runs as the call arrives,
 uses no audio from the future, and costs 3 ms of processor time per
-second of audio. AudioSeal, a leading neural watermark, fails on most of
-the same calls below about 8 kbit/s. A streaming detector that never
-delays the call verified all 82 marked greetings on live calls over the
-public phone network, 76 of them within 3 seconds, and rejected unmarked
+second of audio. On the audio of the live calls it verified 78 of 82
+marked greetings with at most 2 seconds of speech, against 56 without
+it. AudioSeal, a leading neural watermark, fails on most of the same
+calls below about 8 kbit/s. A streaming detector that never delays the
+call verified all 82 marked greetings on live calls over the public
+phone network, 76 of them within 3 seconds, and rejected unmarked
 greetings, marks registered by another caller and replays. Mean PESQ-WB
 was 4.44, and four listeners reported no artefacts on more than 50
 calls.
@@ -91,7 +93,7 @@ is allowed) to the receiving agent or person. A code is accepted once.
 by a party holding this call's code. Combined with the registry, that
 gives: this is the call that the signed-in customer's agent announced.
 
-\begin{center}\small \textbf{Table 1. Attacks considered and their outcome.}\end{center}
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 1. Attacks considered and their outcome.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -303,7 +305,7 @@ time}]{figures/fig1_score_over_time.png}}\end{center}
 \emph{Figure 2. Match score against seconds of speech heard. Lines are
 medians; bands are quartiles.}
 
-\begin{center}\small \textbf{Table 2. Human speech, 65 held-out recordings. Share of calls
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 2. Human speech, 65 held-out recordings. Share of calls
 verified by a given time, at $\tau$ = 7.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -356,7 +358,7 @@ Opus 6k & 0\% & 0\% & 2\% & 45\% & 92\% & 5.25 s \\
 \end{longtable}
 }
 
-\begin{center}\small \textbf{Table 3. Synthetic agent voices, 14 recordings of 4 to 8 s.}\end{center}
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 3. Synthetic agent voices, 14 recordings of 4 to 8 s.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -459,7 +461,7 @@ marked call from an unmarked one. Sample pairs are in
 The first proof of concept used fixed $\pm$2 dB changes on pairs of
 neighbouring bands. On the same held-out recordings and pass mark:
 
-\begin{center}\small \textbf{Table 4. Share verified within 3 s / 5 s.}\end{center}
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 4. Share verified within 3 s / 5 s.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lll@{}}
@@ -493,7 +495,7 @@ looser than the Palabra pass mark. It is set separately for 3 s and for
 8 s of audio, which is why a share can fall with more audio. Mean
 PESQ-WB of the AudioSeal mark was 4.40, close to Palabra's 4.44.
 
-\begin{center}\small \textbf{Table 5. Share of recordings detected within 3 s / 8 s.
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 5. Share of recordings detected within 3 s / 8 s.
 AudioSeal at a loose criterion, Palabra at $\tau$ = 7.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -553,7 +555,7 @@ and the held-out speakers), each sent through a random codec, sometimes
 two, sometimes with added noise. The loss is the negative match score on
 random-length prefixes. Training took 7 minutes on a laptop GPU.
 
-\begin{center}\small \textbf{Table 6. Held-out human speech (65 recordings), $\tau$ = 7.
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 6. Held-out human speech (65 recordings), $\tau$ = 7.
 Share verified by 2 s / 3 s / 5 s, and median time to verify.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -616,7 +618,7 @@ took the 8 seconds with the most speech, starting where the talker
 starts, marked them, and sent them through the bridge again. The
 analytic detector and the pass mark of 7 are unchanged.
 
-\begin{center}\small \textbf{Table 7. Real call recordings, marked and sent through a second
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 7. Real call recordings, marked and sent through a second
 line. Verified within 3 s / 5 s, and median time.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -664,7 +666,7 @@ matched the whole-file detector that had been told where the greeting
 starts (Table 8). It used 2.4 ms of processor time per second of audio
 in Python on one core.
 
-\begin{center}\small \textbf{Table 8. Streaming detector on real call recordings. Verified
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 8. Streaming detector on real call recordings. Verified
 within 3 s / 5 s, and median time from the start of the greeting.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -696,7 +698,7 @@ Each call was registered first, and the detector ran live with the pass
 mark of 7. The greetings were the 14 agent voices (twice each, with
 different codes) and 20 held-out human recordings.
 
-\begin{center}\small \textbf{Table 9. Live calls over the public phone network.}\end{center}
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 9. Live calls over the public phone network.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -784,7 +786,7 @@ The code binds caller, callee and call. We played four cases into the
 demo service through a simulated AMR 12.2 line
 (\texttt{demo/test\_cross.py}).
 
-\begin{center}\small \textbf{Table 10. Marks made for other calls, through a simulated AMR
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 10. Marks made for other calls, through a simulated AMR
 12.2 line.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -831,7 +833,7 @@ takeover by a perfect voice clone with no click or gap). After locking
 alignment in the first 3 seconds, the detector scored every 3-second
 window and raised an alarm when one fell below 3.
 
-\begin{center}\small \textbf{Table 11. Takeover detection with whole-call marking (calls that
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 11. Takeover detection with whole-call marking (calls that
 verified within 3 s).}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -884,7 +886,7 @@ rates networks commonly use. Two tandems model a wideband mobile leg
 that is transcoded on the way: EVS 13.2 then G.711 then Opus 16, and
 AMR-WB 12.65 then G.711 then AMR 12.2.
 
-\begin{center}\small \textbf{Table 12. Wideband mobile codecs, 65 held-out human recordings,
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 12. Wideband mobile codecs, 65 held-out human recordings,
 $\tau$ = 7.}\end{center}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -949,7 +951,7 @@ Neither detector was tuned or trained on these codecs. The learned
 detector of Section 6.6, whose training saw only narrowband codecs, was
 run on the same lines as it is.
 
-\begin{center}\small \textbf{Table 13. Wideband mobile codecs, analytic against learned
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 13. Wideband mobile codecs, analytic against learned
 detector. 65 held-out human recordings, $\tau$ = 7. Share verified by 2
 s / 3 s / 5 s, and median time to verify.}\end{center}
 
@@ -1032,7 +1034,7 @@ began to memorise them after eight passes over the data; with 251
 speakers the score on validation speakers held level to the end of
 training. The smallest network trained in 23 minutes on one rented GPU.
 
-\begin{center}\small \textbf{Table 14. Streaming detectors on 65 held-out human recordings,
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 14. Streaming detectors on 65 held-out human recordings,
 $\tau$ = 7. Share verified by 2 s / 3 s / 5 s, and median time to
 verify. All times include the network's look-ahead of 64 ms.}\end{center}
 
@@ -1119,7 +1121,7 @@ network of Section 6.6 with its 0.2 s of look-ahead. On the 14 agent
 voices the small network verified 96\% of recordings within 3 s on
 average over the lines and all within 5 s (analytic: 60\% and 87\%).
 
-\begin{center}\small \textbf{Table 15. Size, look-ahead and passes. Mean over the 21 lines of
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 15. Size, look-ahead and passes. Mean over the 21 lines of
 Table 14 of the share of human recordings verified by 2 s / 3 s / 5 s,
 and processor time on one laptop core per second of audio.}\end{center}
 
@@ -1178,10 +1180,64 @@ In 331,800 wrong-code trials per configuration, the highest score was
 two; over all ten configurations of Table 15 one trial reached 6 (6.03,
 large network) and none reached 7.
 
-These results are on files sent through software codecs. The streaming
-networks have not yet been run on live calls or added to the packaged
-engine, and they search starts in the first 1.2 s of the audio as the
-whole-file detector does.
+\textbf{On the live calls.} Tables 14 and 15 are on files sent through
+software codecs, with starts searched in the first 1.2 s. We therefore
+ran the small network, in one pass, as a tap would run it, on the audio
+the detector received during the 104 live calls of Section 6.9: frame by
+frame at 8 kHz, with the streaming scorer of Section 6.8, every start in
+the first 10 s, and the pass mark of 7. The network was not trained on
+any audio from a phone network.
+
+\needspace{7\baselineskip}\begin{center}\small \textbf{Table 16. The audio of the live calls of Section 6.9, scored
+with the analytic votes and with the small network. Speech heard is the
+length of mark the scorer needed.}\end{center}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Analytic votes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Small network
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Marked greetings verified (82) & 82 & 82 \\
+Verified with at most 2 s of speech heard & 56 & 78 \\
+Verified with at most 3 s of speech heard & 74 & 81 \\
+Median speech heard & 1.54 s & 1.28 s \\
+Most speech any call needed & 7.2 s & 4.1 s \\
+Unmarked greetings verified (12) & 0; highest score 4.33 & 0; highest
+score 4.24 \\
+Marks registered by another caller verified (4) & 0; highest score 3.59
+& 0; highest score 4.18 \\
+Highest score in 20,800 wrong-code trials & 5.42 & 5.99 \\
+\end{longtable}
+}
+
+The gain seen on simulated lines holds on real ones. Counting the 64 ms
+the network waits, 71 of the 82 marked calls verified sooner than with
+the analytic votes, by a median of 0.45 s over all 82, and the other 11
+verified up to 64 ms later: these are calls that already passed at the
+first or second check, where better votes cannot help and the wait is
+all that shows. The six replayed recordings carry a genuine mark and
+pass with either detector; it is the single use of a registration that
+rejects them (Section 6.9).
+
+The network was then ported to the verification service (59,066 weights
+and about 100 lines of TypeScript with no dependencies), where it
+replaces the analytic votes. Its votes agree with the PyTorch model to
+within 0.00002, it runs once per call however many registrations the
+call is checked against, and it uses about 40 ms of processor time per
+second of audio in JavaScript. This test replays what the live calls
+delivered; new calls placed with the network in the loop are the next
+step.
 
 \section{What shaped the design}
 
@@ -1224,10 +1280,11 @@ audible change.}
 \tightlist
 \item
   \textbf{Mostly simulated lines.} Tables 2 to 8 and 11 to 15 use
-  software codecs on files. The live calls of Section 6.9 are 104 calls
-  between one pair of US numbers with greetings of 4 to 8 seconds.
-  Mobile handsets, international routes, packet loss, noise suppression
-  and echo cancellation were not tested.
+  software codecs on files, and Table 16 replays recorded calls. The
+  live calls of Section 6.9 are 104 calls between one pair of US numbers
+  with greetings of 4 to 8 seconds. Mobile handsets, international
+  routes, packet loss, noise suppression and echo cancellation were not
+  tested.
 \item
   \textbf{Timing slips.} Live lines shift the audio in time (Section
   6.9). The detector tolerates small steps and one large one; a gradual
@@ -1276,13 +1333,13 @@ votes per second and shorten the time to verify.
 
 \textbf{A faster mark.} The learned detector cut the time to verify by
 40\% and more with the embedder untouched, in a causal form cheap enough
-to run beside every call (Section 6.13). Putting it into the streaming
-engine and testing it on live calls comes first. Training the embedder
-with it, with the codecs in the loop {[}24{]}, and embedding inside the
-speech generator instead of after it, should give more. For the lowest
-bitrates a second carrier on pitch {[}15{]} can be fused with the first,
-and an anytime-valid sequential test {[}19, 25{]} would lower the pass
-mark for the same guarantee.
+to run beside every call, and the gain held on the audio of the live
+calls (Section 6.13). New live calls with the network in the loop come
+first. Training the embedder with it, with the codecs in the loop
+{[}24{]}, and embedding inside the speech generator instead of after it,
+should give more. For the lowest bitrates a second carrier on pitch
+{[}15{]} can be fused with the first, and an anytime-valid sequential
+test {[}19, 25{]} would lower the pass mark for the same guarantee.
 
 \textbf{From the greeting to the whole call.} Section 6.11 shows that a
 marked call can be checked continuously. A nonce issued by the answering
