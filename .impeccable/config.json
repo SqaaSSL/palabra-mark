@@ -1,0 +1,19 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [
+      "paper/*.html"
+    ],
+    "ignoreValues": [
+      {
+        "rule": "oversized-h1",
+        "value": "*",
+        "files": [
+          "paper/palabra-mark.html"
+        ],
+        "createdAt": "2026-11-21T21:08:06.510Z",
+        "reason": "agent triage: generated print layout of an academic paper; the h1 is the paper title at 17pt, mirroring the LaTeX article style, not a web hero"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1982 @@
+{
+ "weights": "votenet3_c24.pt",
+ "look_ms": 64,
+ "calls": [
+  {
+   "manifest": "manifest.json",
+   "i": 0,
+   "kind": "marked",
+   "voice": "el_alice.mp3",
+   "secs": 9.9,
+   "analytic": {
+    "best": 7.679905223650367,
+    "at": 4.536,
+    "heard": 2.048,
+    "wrong": 4.588040665362026
+   },
+   "learned": {
+    "best": 10.40932663755433,
+    "at": 3.568,
+    "heard": 1.024,
+    "wrong": 4.357902103444116
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 1,
+   "kind": "marked",
+   "voice": "el_alisha-hi.mp3",
+   "secs": 10.8,
+   "analytic": {
+    "best": 12.80457850149514,
+    "at": 3.856,
+    "heard": 1.536,
+    "wrong": 4.828735135544853
+   },
+   "learned": {
+    "best": 16.138414866159202,
+    "at": 3.664,
+    "heard": 1.28,
+    "wrong": 4.530623400519166
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 2,
+   "kind": "marked",
+   "voice": "el_bill.mp3",
+   "secs": 10.84,
+   "analytic": {
+    "best": 16.001924256045232,
+    "at": 3.704,
+    "heard": 1.28,
+    "wrong": 5.054056106980623
+   },
+   "learned": {
+    "best": 18.52067328705635,
+    "at": 3.76,
+    "heard": 1.28,
+    "wrong": 5.003975116539499
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 3,
+   "kind": "marked",
+   "voice": "el_brian.mp3",
+   "secs": 10.58,
+   "analytic": {
+    "best": 13.124936101433828,
+    "at": 3.632,
+    "heard": 1.024,
+    "wrong": 4.704776663914317
+   },
+   "learned": {
+    "best": 15.604983952241565,
+    "at": 3.696,
+    "heard": 1.024,
+    "wrong": 4.386414663773929
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 4,
+   "kind": "marked",
+   "voice": "el_charlie.mp3",
+   "secs": 9.04,
+   "analytic": {
+    "best": 11.650559250028513,
+    "at": 3.968,
+    "heard": 1.536,
+    "wrong": 4.68679533518305
+   },
+   "learned": {
+    "best": 14.569105410875387,
+    "at": 3.264,
+    "heard": 0.768,
+    "wrong": 4.704964099842088
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 5,
+   "kind": "marked",
+   "voice": "el_george.mp3",
+   "secs": 9.64,
+   "analytic": {
+    "best": 12.938568261482397,
+    "at": 3.56,
+    "heard": 1.28,
+    "wrong": 5.2268825353361885
+   },
+   "learned": {
+    "best": 14.564548859358347,
+    "at": 3.36,
+    "heard": 1.024,
+    "wrong": 4.795850857760736
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 6,
+   "kind": "marked",
+   "voice": "el_mia-es.mp3",
+   "secs": 10.52,
+   "analytic": {
+    "best": 12.035863642910893,
+    "at": 5.464,
+    "heard": 3.072,
+    "wrong": 4.887403055841186
+   },
+   "learned": {
+    "best": 16.45024564826465,
+    "at": 3.456,
+    "heard": 1.024,
+    "wrong": 4.855961579736319
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 7,
+   "kind": "marked",
+   "voice": "el_sarah.mp3",
+   "secs": 8.72,
+   "analytic": {
+    "best": 10.967394523085757,
+    "at": 4.0,
+    "heard": 1.536,
+    "wrong": 4.57042704113641
+   },
+   "learned": {
+    "best": 13.41948400676091,
+    "at": 3.552,
+    "heard": 1.024,
+    "wrong": 4.228130156850193
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 8,
+   "kind": "marked",
+   "voice": "gm_aoede.wav",
+   "secs": 12.42,
+   "analytic": {
+    "best": 14.59571123217585,
+    "at": 3.648,
+    "heard": 1.28,
+    "wrong": 4.71522775908648
+   },
+   "learned": {
+    "best": 18.98860773346464,
+    "at": 3.456,
+    "heard": 1.024,
+    "wrong": 4.536275943671343
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 9,
+   "kind": "marked",
+   "voice": "gm_charon.wav",
+   "secs": 11.76,
+   "analytic": {
+    "best": 9.258740310472316,
+    "at": 5.192,
+    "heard": 2.816,
+    "wrong": 4.862604077413461
+   },
+   "learned": {
+    "best": 11.429451994223378,
+    "at": 3.456,
+    "heard": 1.024,
+    "wrong": 4.924088011572384
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 10,
+   "kind": "marked",
+   "voice": "gm_fenrir.wav",
+   "secs": 11.78,
+   "analytic": {
+    "best": 15.776340939797818,
+    "at": 3.32,
+    "heard": 1.024,
+    "wrong": 4.951170323623155
+   },
+   "learned": {
+    "best": 18.46182662745951,
+    "at": 3.136,
+    "heard": 0.768,
+    "wrong": 4.785586716063082
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 11,
+   "kind": "marked",
+   "voice": "gm_kore.wav",
+   "secs": 12.24,
+   "analytic": {
+    "best": 15.092909442945894,
+    "at": 3.832,
+    "heard": 1.536,
+    "wrong": 4.90363320431283
+   },
+   "learned": {
+    "best": 17.791284011808642,
+    "at": 3.632,
+    "heard": 1.28,
+    "wrong": 4.8503946567432115
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 12,
+   "kind": "marked",
+   "voice": "gm_leda.wav",
+   "secs": 12.84,
+   "analytic": {
+    "best": 10.427214014630037,
+    "at": 4.272,
+    "heard": 1.536,
+    "wrong": 5.195031741267439
+   },
+   "learned": {
+    "best": 13.220288660122716,
+    "at": 4.08,
+    "heard": 1.28,
+    "wrong": 4.863833957971163
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 13,
+   "kind": "marked",
+   "voice": "gm_puck.wav",
+   "secs": 12.44,
+   "analytic": {
+    "best": 16.723749496362828,
+    "at": 3.264,
+    "heard": 1.024,
+    "wrong": 4.5049356765232815
+   },
+   "learned": {
+    "best": 20.056573176653853,
+    "at": 3.312,
+    "heard": 1.024,
+    "wrong": 4.76405970033414
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 14,
+   "kind": "cross",
+   "voice": "el_alice.mp3",
+   "secs": 9.76,
+   "analytic": {
+    "best": 3.299404079646823,
+    "at": null,
+    "heard": null,
+    "wrong": 4.70452022062395
+   },
+   "learned": {
+    "best": 3.2881830348424055,
+    "at": null,
+    "heard": null,
+    "wrong": 4.481497237051986
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 15,
+   "kind": "cross",
+   "voice": "el_alisha-hi.mp3",
+   "secs": 10.56,
+   "analytic": {
+    "best": 3.5892294655735846,
+    "at": null,
+    "heard": null,
+    "wrong": 5.342688768642262
+   },
+   "learned": {
+    "best": 3.2573081654137845,
+    "at": null,
+    "heard": null,
+    "wrong": 4.799248776233734
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 16,
+   "kind": "cross",
+   "voice": "el_bill.mp3",
+   "secs": 10.78,
+   "analytic": {
+    "best": 3.5115649496693866,
+    "at": null,
+    "heard": null,
+    "wrong": 4.813601704769087
+   },
+   "learned": {
+    "best": 4.184593120434359,
+    "at": null,
+    "heard": null,
+    "wrong": 4.568699258768529
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 17,
+   "kind": "cross",
+   "voice": "el_brian.mp3",
+   "secs": 10.28,
+   "analytic": {
+    "best": 3.4468029520566037,
+    "at": null,
+    "heard": null,
+    "wrong": 4.713907036920171
+   },
+   "learned": {
+    "best": 3.8614423767217594,
+    "at": null,
+    "heard": null,
+    "wrong": 4.633275361350243
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 18,
+   "kind": "replay",
+   "voice": "el_charlie.mp3",
+   "secs": 9.24,
+   "analytic": {
+    "best": 13.002694833261284,
+    "at": 3.832,
+    "heard": 1.28,
+    "wrong": 4.93173141546336
+   },
+   "learned": {
+    "best": 14.711701364661792,
+    "at": 3.376,
+    "heard": 0.768,
+    "wrong": 4.5454222829210735
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 18,
+   "kind": "replay-2nd",
+   "voice": "el_charlie.mp3",
+   "secs": 9.2,
+   "analytic": {
+    "best": 13.214257581398053,
+    "at": 3.768,
+    "heard": 1.28,
+    "wrong": 5.114886098840138
+   },
+   "learned": {
+    "best": 14.631338869722306,
+    "at": 3.312,
+    "heard": 0.768,
+    "wrong": 4.587680667940927
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 19,
+   "kind": "replay",
+   "voice": "el_george.mp3",
+   "secs": 9.84,
+   "analytic": {
+    "best": 11.971115497751079,
+    "at": 3.552,
+    "heard": 1.024,
+    "wrong": 4.820527349112901
+   },
+   "learned": {
+    "best": 13.505725685999598,
+    "at": 3.36,
+    "heard": 0.768,
+    "wrong": 4.774102750241896
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 19,
+   "kind": "replay-2nd",
+   "voice": "el_george.mp3",
+   "secs": 9.86,
+   "analytic": {
+    "best": 11.884187395720843,
+    "at": 3.568,
+    "heard": 1.024,
+    "wrong": 4.424063030253709
+   },
+   "learned": {
+    "best": 13.327789018952158,
+    "at": 3.376,
+    "heard": 0.768,
+    "wrong": 4.390797128669344
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 20,
+   "kind": "replay",
+   "voice": "el_mia-es.mp3",
+   "secs": 10.72,
+   "analytic": {
+    "best": 13.86275000944875,
+    "at": 4.304,
+    "heard": 1.792,
+    "wrong": 4.645507927092212
+   },
+   "learned": {
+    "best": 18.2606056195542,
+    "at": 3.6,
+    "heard": 1.024,
+    "wrong": 4.644034784620075
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 20,
+   "kind": "replay-2nd",
+   "voice": "el_mia-es.mp3",
+   "secs": 10.44,
+   "analytic": {
+    "best": 13.894473029147342,
+    "at": 4.096,
+    "heard": 1.792,
+    "wrong": 4.822644103608549
+   },
+   "learned": {
+    "best": 18.28115433774496,
+    "at": 3.392,
+    "heard": 1.024,
+    "wrong": 4.7086034987160055
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 21,
+   "kind": "marked",
+   "voice": "1462-170142-0005.flac",
+   "secs": 12.72,
+   "analytic": {
+    "best": 15.076105510442746,
+    "at": 4.264,
+    "heard": 1.792,
+    "wrong": 4.977184275049438
+   },
+   "learned": {
+    "best": 17.38658750680319,
+    "at": 3.824,
+    "heard": 1.28,
+    "wrong": 4.492398924589018
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 22,
+   "kind": "marked",
+   "voice": "1462-170145-0000.flac",
+   "secs": 12.6,
+   "analytic": {
+    "best": 14.09098068759783,
+    "at": 4.248,
+    "heard": 1.792,
+    "wrong": 5.027517643371951
+   },
+   "learned": {
+    "best": 16.93750501277144,
+    "at": 3.792,
+    "heard": 1.28,
+    "wrong": 4.725894023088064
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 23,
+   "kind": "marked",
+   "voice": "1988-147956-0000.flac",
+   "secs": 12.78,
+   "analytic": {
+    "best": 13.20329738229204,
+    "at": 4.832,
+    "heard": 2.3040000000000003,
+    "wrong": 4.719368892641061
+   },
+   "learned": {
+    "best": 16.09846077054326,
+    "at": 4.384,
+    "heard": 1.792,
+    "wrong": 4.5074781143761165
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 24,
+   "kind": "marked",
+   "voice": "1988-147956-0001.flac",
+   "secs": 12.86,
+   "analytic": {
+    "best": 14.106188802991582,
+    "at": 4.512,
+    "heard": 2.048,
+    "wrong": 4.763589375218027
+   },
+   "learned": {
+    "best": 16.362263223499657,
+    "at": 3.808,
+    "heard": 1.28,
+    "wrong": 4.229732499353011
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 25,
+   "kind": "marked",
+   "voice": "2035-147961-0000.flac",
+   "secs": 12.76,
+   "analytic": {
+    "best": 14.605295068300041,
+    "at": 4.504,
+    "heard": 2.048,
+    "wrong": 4.847565510862558
+   },
+   "learned": {
+    "best": 18.330647959518096,
+    "at": 4.048,
+    "heard": 1.536,
+    "wrong": 4.626832212264069
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 26,
+   "kind": "marked",
+   "voice": "2035-147961-0021.flac",
+   "secs": 12.4,
+   "analytic": {
+    "best": 10.090711776405481,
+    "at": 6.04,
+    "heard": 3.84,
+    "wrong": 4.835094193009794
+   },
+   "learned": {
+    "best": 13.580419489953904,
+    "at": 4.832,
+    "heard": 2.56,
+    "wrong": 4.323854618308566
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 27,
+   "kind": "marked",
+   "voice": "2428-83699-0000.flac",
+   "secs": 12.86,
+   "analytic": {
+    "best": 17.597064325855147,
+    "at": 3.864,
+    "heard": 1.28,
+    "wrong": 4.740933970154779
+   },
+   "learned": {
+    "best": 19.502623006603496,
+    "at": 3.664,
+    "heard": 1.024,
+    "wrong": 4.635425701009218
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 28,
+   "kind": "marked",
+   "voice": "2428-83699-0008.flac",
+   "secs": 12.86,
+   "analytic": {
+    "best": 21.906099365078294,
+    "at": 3.64,
+    "heard": 1.024,
+    "wrong": 4.990503071311126
+   },
+   "learned": {
+    "best": 24.597326941514915,
+    "at": 3.696,
+    "heard": 1.024,
+    "wrong": 4.68589555480609
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 29,
+   "kind": "marked",
+   "voice": "2803-154320-0001.flac",
+   "secs": 12.5,
+   "analytic": {
+    "best": 14.675113340879335,
+    "at": 4.024,
+    "heard": 1.792,
+    "wrong": 4.42381044230079
+   },
+   "learned": {
+    "best": 16.444201745747833,
+    "at": 3.568,
+    "heard": 1.28,
+    "wrong": 4.46627429963338
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 30,
+   "kind": "marked",
+   "voice": "2803-154320-0004.flac",
+   "secs": 12.74,
+   "analytic": {
+    "best": 15.778489712127715,
+    "at": 4.0,
+    "heard": 1.536,
+    "wrong": 4.587892096169584
+   },
+   "learned": {
+    "best": 17.233217366957515,
+    "at": 4.064,
+    "heard": 1.536,
+    "wrong": 4.989232628366293
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 31,
+   "kind": "marked",
+   "voice": "3536-23268-0000.flac",
+   "secs": 13.14,
+   "analytic": {
+    "best": 13.193669536272488,
+    "at": 4.792,
+    "heard": 2.048,
+    "wrong": 4.927306838383455
+   },
+   "learned": {
+    "best": 16.67600413888213,
+    "at": 4.592,
+    "heard": 1.792,
+    "wrong": 4.858381110750967
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 32,
+   "kind": "marked",
+   "voice": "3536-23268-0001.flac",
+   "secs": 12.4,
+   "analytic": {
+    "best": 12.030269019908488,
+    "at": 4.016,
+    "heard": 1.792,
+    "wrong": 4.673026558177176
+   },
+   "learned": {
+    "best": 15.538993457826558,
+    "at": 3.568,
+    "heard": 1.28,
+    "wrong": 4.398973538091471
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 33,
+   "kind": "marked",
+   "voice": "3752-4944-0016.flac",
+   "secs": 12.56,
+   "analytic": {
+    "best": 17.37429146566434,
+    "at": 3.528,
+    "heard": 1.28,
+    "wrong": 5.0758652936151245
+   },
+   "learned": {
+    "best": 19.64360185163067,
+    "at": 3.328,
+    "heard": 1.024,
+    "wrong": 4.660713781092738
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 34,
+   "kind": "marked",
+   "voice": "3752-4944-0020.flac",
+   "secs": 12.4,
+   "analytic": {
+    "best": 11.197128001429467,
+    "at": 4.536,
+    "heard": 2.3040000000000003,
+    "wrong": 4.465717465249372
+   },
+   "learned": {
+    "best": 12.72155590867459,
+    "at": 3.84,
+    "heard": 1.536,
+    "wrong": 4.695308121339061
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 35,
+   "kind": "marked",
+   "voice": "5694-64038-0017.flac",
+   "secs": 12.74,
+   "analytic": {
+    "best": 8.086779884038478,
+    "at": 9.664,
+    "heard": 7.168,
+    "wrong": 4.58830212849667
+   },
+   "learned": {
+    "best": 11.129719889598041,
+    "at": 6.656,
+    "heard": 4.096,
+    "wrong": 4.423444392543211
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 36,
+   "kind": "marked",
+   "voice": "5694-64038-0018.flac",
+   "secs": 12.8,
+   "analytic": {
+    "best": 18.400465286083577,
+    "at": 4.368,
+    "heard": 1.792,
+    "wrong": 4.897440562775999
+   },
+   "learned": {
+    "best": 21.949921196542864,
+    "at": 3.92,
+    "heard": 1.28,
+    "wrong": 4.709629684902014
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 37,
+   "kind": "marked",
+   "voice": "6241-61943-0027.flac",
+   "secs": 12.7,
+   "analytic": {
+    "best": 17.744869867254277,
+    "at": 3.936,
+    "heard": 1.536,
+    "wrong": 5.0009839568511545
+   },
+   "learned": {
+    "best": 20.618289844459788,
+    "at": 3.744,
+    "heard": 1.28,
+    "wrong": 4.689718967145322
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 38,
+   "kind": "marked",
+   "voice": "6241-61946-0011.flac",
+   "secs": 12.86,
+   "analytic": {
+    "best": 18.265192445665537,
+    "at": 3.472,
+    "heard": 0.768,
+    "wrong": 4.946690539610529
+   },
+   "learned": {
+    "best": 20.075738211920182,
+    "at": 3.536,
+    "heard": 0.768,
+    "wrong": 5.069866628954064
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 39,
+   "kind": "marked",
+   "voice": "6319-57405-0001.flac",
+   "secs": 12.56,
+   "analytic": {
+    "best": 14.162051725642224,
+    "at": 4.168,
+    "heard": 1.792,
+    "wrong": 4.999340227673816
+   },
+   "learned": {
+    "best": 17.291879245284473,
+    "at": 3.728,
+    "heard": 1.28,
+    "wrong": 4.885521904551507
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 40,
+   "kind": "marked",
+   "voice": "6319-57405-0008.flac",
+   "secs": 12.94,
+   "analytic": {
+    "best": 10.268619060569069,
+    "at": 7.32,
+    "heard": 4.6080000000000005,
+    "wrong": 4.732152627910981
+   },
+   "learned": {
+    "best": 13.536343835434153,
+    "at": 4.56,
+    "heard": 1.792,
+    "wrong": 4.53604306171652
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 41,
+   "kind": "marked",
+   "voice": "el_alice.mp3",
+   "secs": 9.9,
+   "analytic": {
+    "best": 11.72114498942797,
+    "at": 3.824,
+    "heard": 1.536,
+    "wrong": 4.577314687346094
+   },
+   "learned": {
+    "best": 16.77517645190133,
+    "at": 3.376,
+    "heard": 1.024,
+    "wrong": 4.8836302517846475
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 42,
+   "kind": "marked",
+   "voice": "el_alisha-hi.mp3",
+   "secs": 10.64,
+   "analytic": {
+    "best": 11.677823306239878,
+    "at": 3.896,
+    "heard": 1.792,
+    "wrong": 4.8535305629295955
+   },
+   "learned": {
+    "best": 16.16047334956853,
+    "at": 3.44,
+    "heard": 1.28,
+    "wrong": 5.235402133203279
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 43,
+   "kind": "marked",
+   "voice": "el_bill.mp3",
+   "secs": 9.96,
+   "analytic": {
+    "best": 16.260172178900824,
+    "at": 3.264,
+    "heard": 1.28,
+    "wrong": 4.82417161090963
+   },
+   "learned": {
+    "best": 18.952043057705563,
+    "at": 3.328,
+    "heard": 1.28,
+    "wrong": 4.3931195261653935
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 44,
+   "kind": "marked",
+   "voice": "el_brian.mp3",
+   "secs": 10.24,
+   "analytic": {
+    "best": 12.367582051589505,
+    "at": 4.32,
+    "heard": 2.048,
+    "wrong": 4.543197746448935
+   },
+   "learned": {
+    "best": 15.697379636014102,
+    "at": 3.872,
+    "heard": 1.536,
+    "wrong": 4.752653788989078
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 45,
+   "kind": "marked",
+   "voice": "el_charlie.mp3",
+   "secs": 12.64,
+   "analytic": {
+    "best": 11.283947255508426,
+    "at": 3.928,
+    "heard": 1.536,
+    "wrong": 4.966152708573711
+   },
+   "learned": {
+    "best": 13.778269892679498,
+    "at": 3.216,
+    "heard": 0.768,
+    "wrong": 4.5727386371569825
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 46,
+   "kind": "marked",
+   "voice": "el_george.mp3",
+   "secs": 9.72,
+   "analytic": {
+    "best": 13.548823210988248,
+    "at": 3.592,
+    "heard": 1.28,
+    "wrong": 4.99535353652866
+   },
+   "learned": {
+    "best": 14.979991444637665,
+    "at": 3.392,
+    "heard": 1.024,
+    "wrong": 4.4343803374260045
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 47,
+   "kind": "marked",
+   "voice": "el_mia-es.mp3",
+   "secs": 10.4,
+   "analytic": {
+    "best": 15.398036812236894,
+    "at": 3.336,
+    "heard": 1.024,
+    "wrong": 4.710489945955171
+   },
+   "learned": {
+    "best": 18.366598810807776,
+    "at": 3.392,
+    "heard": 1.024,
+    "wrong": 4.774680830160409
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 48,
+   "kind": "marked",
+   "voice": "el_sarah.mp3",
+   "secs": 8.58,
+   "analytic": {
+    "best": 13.926624605106895,
+    "at": 3.336,
+    "heard": 1.024,
+    "wrong": 4.606446681626448
+   },
+   "learned": {
+    "best": 16.402370346525252,
+    "at": 3.136,
+    "heard": 0.768,
+    "wrong": 4.589651167164155
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 49,
+   "kind": "marked",
+   "voice": "gm_aoede.wav",
+   "secs": 12.46,
+   "analytic": {
+    "best": 15.648583427483425,
+    "at": 3.888,
+    "heard": 1.536,
+    "wrong": 4.6112591914741685
+   },
+   "learned": {
+    "best": 18.74393016151333,
+    "at": 3.44,
+    "heard": 1.024,
+    "wrong": 4.806874635226502
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 50,
+   "kind": "marked",
+   "voice": "gm_charon.wav",
+   "secs": 11.66,
+   "analytic": {
+    "best": 16.1313909532348,
+    "at": 3.216,
+    "heard": 1.024,
+    "wrong": 5.040566783422044
+   },
+   "learned": {
+    "best": 18.50002921986016,
+    "at": 3.024,
+    "heard": 0.768,
+    "wrong": 4.791818951412841
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 51,
+   "kind": "marked",
+   "voice": "gm_fenrir.wav",
+   "secs": 11.64,
+   "analytic": {
+    "best": 16.038129567883264,
+    "at": 3.304,
+    "heard": 1.024,
+    "wrong": 5.08236225481601
+   },
+   "learned": {
+    "best": 18.63906480379107,
+    "at": 3.104,
+    "heard": 0.768,
+    "wrong": 4.450520407156872
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 52,
+   "kind": "marked",
+   "voice": "gm_kore.wav",
+   "secs": 12.42,
+   "analytic": {
+    "best": 14.33474753267734,
+    "at": 4.472,
+    "heard": 2.048,
+    "wrong": 5.264947174737965
+   },
+   "learned": {
+    "best": 18.02024042710468,
+    "at": 3.76,
+    "heard": 1.28,
+    "wrong": 4.4921843286586824
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 53,
+   "kind": "marked",
+   "voice": "gm_leda.wav",
+   "secs": 12.5,
+   "analytic": {
+    "best": 14.921017725531177,
+    "at": 3.632,
+    "heard": 1.28,
+    "wrong": 4.837855977472569
+   },
+   "learned": {
+    "best": 18.22334354789956,
+    "at": 3.44,
+    "heard": 1.024,
+    "wrong": 4.691218089843862
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 54,
+   "kind": "marked",
+   "voice": "gm_puck.wav",
+   "secs": 12.68,
+   "analytic": {
+    "best": 16.18674254504456,
+    "at": 3.488,
+    "heard": 1.024,
+    "wrong": 4.634809453251957
+   },
+   "learned": {
+    "best": 19.495596206792495,
+    "at": 3.296,
+    "heard": 0.768,
+    "wrong": 4.4969334805470975
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 55,
+   "kind": "unmarked",
+   "voice": "el_alice.mp3",
+   "secs": 10.08,
+   "analytic": {
+    "best": 4.329591118386073,
+    "at": null,
+    "heard": null,
+    "wrong": 5.058753822995228
+   },
+   "learned": {
+    "best": 3.7845891502876614,
+    "at": null,
+    "heard": null,
+    "wrong": 4.60250018117055
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 56,
+   "kind": "unmarked",
+   "voice": "el_alisha-hi.mp3",
+   "secs": 11.14,
+   "analytic": {
+    "best": 4.303248727525439,
+    "at": null,
+    "heard": null,
+    "wrong": 4.676417905090391
+   },
+   "learned": {
+    "best": 3.0972599737270397,
+    "at": null,
+    "heard": null,
+    "wrong": 5.122217188695181
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 57,
+   "kind": "unmarked",
+   "voice": "el_bill.mp3",
+   "secs": 10.92,
+   "analytic": {
+    "best": 4.3273657891089945,
+    "at": null,
+    "heard": null,
+    "wrong": 4.731577752794004
+   },
+   "learned": {
+    "best": 3.5135028355896303,
+    "at": null,
+    "heard": null,
+    "wrong": 4.2707965489733635
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 58,
+   "kind": "unmarked",
+   "voice": "el_brian.mp3",
+   "secs": 10.38,
+   "analytic": {
+    "best": 3.3445982713611984,
+    "at": null,
+    "heard": null,
+    "wrong": 4.477899104096496
+   },
+   "learned": {
+    "best": 3.402314577601945,
+    "at": null,
+    "heard": null,
+    "wrong": 4.6017157739329395
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 59,
+   "kind": "unmarked",
+   "voice": "1462-170142-0005.flac",
+   "secs": 12.92,
+   "analytic": {
+    "best": 4.100359361308154,
+    "at": null,
+    "heard": null,
+    "wrong": 4.670293782789947
+   },
+   "learned": {
+    "best": 3.1082513870808626,
+    "at": null,
+    "heard": null,
+    "wrong": 4.284699607308522
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 60,
+   "kind": "unmarked",
+   "voice": "1462-170145-0000.flac",
+   "secs": 12.62,
+   "analytic": {
+    "best": 3.646525191900938,
+    "at": null,
+    "heard": null,
+    "wrong": 4.502761021362966
+   },
+   "learned": {
+    "best": 3.6691625918025963,
+    "at": null,
+    "heard": null,
+    "wrong": 4.92762400007132
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 61,
+   "kind": "unmarked",
+   "voice": "1988-147956-0000.flac",
+   "secs": 12.74,
+   "analytic": {
+    "best": 3.812350341654558,
+    "at": null,
+    "heard": null,
+    "wrong": 4.649728183177657
+   },
+   "learned": {
+    "best": 3.4984145699009184,
+    "at": null,
+    "heard": null,
+    "wrong": 4.417368166554623
+   }
+  },
+  {
+   "manifest": "manifest.json",
+   "i": 62,
+   "kind": "unmarked",
+   "voice": "1988-147956-0001.flac",
+   "secs": 12.66,
+   "analytic": {
+    "best": 3.3559834733631932,
+    "at": null,
+    "heard": null,
+    "wrong": 4.814840753811967
+   },
+   "learned": {
+    "best": 3.212885273158432,
+    "at": null,
+    "heard": null,
+    "wrong": 5.380890828783451
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 0,
+   "kind": "marked",
+   "voice": "el_alice.mp3",
+   "secs": 9.993,
+   "analytic": {
+    "best": 13.607445102935866,
+    "at": 4.312,
+    "heard": 2.048,
+    "wrong": 4.3996551995769435
+   },
+   "learned": {
+    "best": 17.907455120470797,
+    "at": 3.104,
+    "heard": 0.768,
+    "wrong": 4.442573091025914
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 1,
+   "kind": "marked",
+   "voice": "el_alisha-hi.mp3",
+   "secs": 10.99,
+   "analytic": {
+    "best": 8.281720738701548,
+    "at": 6.912,
+    "heard": 4.6080000000000005,
+    "wrong": 4.839443540567042
+   },
+   "learned": {
+    "best": 11.703862189081082,
+    "at": 4.16,
+    "heard": 1.792,
+    "wrong": 4.4377524463457165
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 2,
+   "kind": "marked",
+   "voice": "el_bill.mp3",
+   "secs": 10.993,
+   "analytic": {
+    "best": 16.450362756713407,
+    "at": 3.6,
+    "heard": 1.28,
+    "wrong": 4.54928098672118
+   },
+   "learned": {
+    "best": 19.638441898501554,
+    "at": 3.408,
+    "heard": 1.024,
+    "wrong": 4.705853605431026
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 3,
+   "kind": "marked",
+   "voice": "el_brian.mp3",
+   "secs": 9.99,
+   "analytic": {
+    "best": 15.63396413502697,
+    "at": 3.336,
+    "heard": 1.024,
+    "wrong": 4.362057619366143
+   },
+   "learned": {
+    "best": 17.818871429572088,
+    "at": 3.392,
+    "heard": 1.024,
+    "wrong": 4.901761717058392
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 4,
+   "kind": "marked",
+   "voice": "el_charlie.mp3",
+   "secs": 8.991,
+   "analytic": {
+    "best": 11.712168826400246,
+    "at": 3.896,
+    "heard": 1.536,
+    "wrong": 5.058185899101791
+   },
+   "learned": {
+    "best": 14.447146156052336,
+    "at": 3.184,
+    "heard": 0.768,
+    "wrong": 4.420849805977538
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 5,
+   "kind": "marked",
+   "voice": "el_george.mp3",
+   "secs": 9.992,
+   "analytic": {
+    "best": 13.912844116623535,
+    "at": 3.352,
+    "heard": 1.024,
+    "wrong": 4.371096704248716
+   },
+   "learned": {
+    "best": 15.71404815361807,
+    "at": 3.152,
+    "heard": 0.768,
+    "wrong": 4.789579345495049
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 6,
+   "kind": "marked",
+   "voice": "el_mia-es.mp3",
+   "secs": 9.994,
+   "analytic": {
+    "best": 15.011326883442043,
+    "at": 4.136,
+    "heard": 1.792,
+    "wrong": 4.541589099577049
+   },
+   "learned": {
+    "best": 18.97210170519178,
+    "at": 3.424,
+    "heard": 1.024,
+    "wrong": 4.730766795822116
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 7,
+   "kind": "marked",
+   "voice": "el_sarah.mp3",
+   "secs": 7.984,
+   "analytic": {
+    "best": 14.018744757666003,
+    "at": 3.272,
+    "heard": 1.024,
+    "wrong": 4.803239702970885
+   },
+   "learned": {
+    "best": 16.64883974483048,
+    "at": 3.072,
+    "heard": 0.768,
+    "wrong": 4.480173205721202
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 8,
+   "kind": "marked",
+   "voice": "gm_aoede.wav",
+   "secs": 11.99,
+   "analytic": {
+    "best": 15.340638449736405,
+    "at": 3.64,
+    "heard": 1.28,
+    "wrong": 4.730936453490099
+   },
+   "learned": {
+    "best": 19.372618049338964,
+    "at": 3.44,
+    "heard": 1.024,
+    "wrong": 4.746193584761404
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 9,
+   "kind": "marked",
+   "voice": "gm_charon.wav",
+   "secs": 11.99,
+   "analytic": {
+    "best": 15.482605460977814,
+    "at": 3.232,
+    "heard": 1.024,
+    "wrong": 4.6575228510731375
+   },
+   "learned": {
+    "best": 17.97282222356415,
+    "at": 3.296,
+    "heard": 1.024,
+    "wrong": 4.721705766028074
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 10,
+   "kind": "marked",
+   "voice": "gm_fenrir.wav",
+   "secs": 11.991,
+   "analytic": {
+    "best": 10.873139745631303,
+    "at": 3.496,
+    "heard": 1.28,
+    "wrong": 4.746000723399391
+   },
+   "learned": {
+    "best": 13.012228518618373,
+    "at": 3.04,
+    "heard": 0.768,
+    "wrong": 5.423335350440213
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 11,
+   "kind": "marked",
+   "voice": "gm_kore.wav",
+   "secs": 11.99,
+   "analytic": {
+    "best": 16.674719427306556,
+    "at": 3.488,
+    "heard": 1.28,
+    "wrong": 4.951658077147593
+   },
+   "learned": {
+    "best": 20.172699716196032,
+    "at": 3.28,
+    "heard": 1.024,
+    "wrong": 4.678906131462907
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 12,
+   "kind": "marked",
+   "voice": "gm_leda.wav",
+   "secs": 11.994,
+   "analytic": {
+    "best": 15.89110893390637,
+    "at": 3.712,
+    "heard": 1.28,
+    "wrong": 4.818002145993451
+   },
+   "learned": {
+    "best": 18.712493973505726,
+    "at": 3.76,
+    "heard": 1.28,
+    "wrong": 4.568325798276961
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 13,
+   "kind": "marked",
+   "voice": "gm_puck.wav",
+   "secs": 12.994,
+   "analytic": {
+    "best": 17.87597954214878,
+    "at": 3.248,
+    "heard": 1.024,
+    "wrong": 4.773655239590475
+   },
+   "learned": {
+    "best": 20.994449102216077,
+    "at": 3.056,
+    "heard": 0.768,
+    "wrong": 4.596115598424882
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 14,
+   "kind": "marked",
+   "voice": "1462-170142-0005.flac",
+   "secs": 12.989,
+   "analytic": {
+    "best": 15.52826031598166,
+    "at": 4.48,
+    "heard": 2.048,
+    "wrong": 5.165671990054402
+   },
+   "learned": {
+    "best": 18.30211415094574,
+    "at": 3.76,
+    "heard": 1.28,
+    "wrong": 4.547691529185889
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 15,
+   "kind": "marked",
+   "voice": "1462-170145-0000.flac",
+   "secs": 12.994,
+   "analytic": {
+    "best": 11.527028906396202,
+    "at": 4.264,
+    "heard": 1.792,
+    "wrong": 4.907164331862497
+   },
+   "learned": {
+    "best": 13.214288021291313,
+    "at": 3.808,
+    "heard": 1.28,
+    "wrong": 4.746394908087233
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 16,
+   "kind": "marked",
+   "voice": "1988-147956-0000.flac",
+   "secs": 12.992,
+   "analytic": {
+    "best": 14.61459472807753,
+    "at": 4.688,
+    "heard": 2.3040000000000003,
+    "wrong": 4.547343709355731
+   },
+   "learned": {
+    "best": 17.363635245298845,
+    "at": 3.984,
+    "heard": 1.536,
+    "wrong": 4.794203813604248
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 17,
+   "kind": "marked",
+   "voice": "1988-147956-0001.flac",
+   "secs": 12.991,
+   "analytic": {
+    "best": 14.909622715290624,
+    "at": 4.112,
+    "heard": 1.792,
+    "wrong": 4.834544667216706
+   },
+   "learned": {
+    "best": 16.8221168819576,
+    "at": 3.664,
+    "heard": 1.28,
+    "wrong": 4.435381509306394
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 18,
+   "kind": "marked",
+   "voice": "2035-147961-0000.flac",
+   "secs": 12.99,
+   "analytic": {
+    "best": 13.559329761062115,
+    "at": 4.92,
+    "heard": 2.56,
+    "wrong": 5.050389775250955
+   },
+   "learned": {
+    "best": 17.989625397702028,
+    "at": 3.952,
+    "heard": 1.536,
+    "wrong": 4.708155452519612
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 19,
+   "kind": "marked",
+   "voice": "2035-147961-0021.flac",
+   "secs": 12.992,
+   "analytic": {
+    "best": 10.884848276112148,
+    "at": 5.84,
+    "heard": 3.584,
+    "wrong": 5.270493966409988
+   },
+   "learned": {
+    "best": 13.94799345768955,
+    "at": 4.368,
+    "heard": 2.048,
+    "wrong": 4.63429737608081
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 20,
+   "kind": "marked",
+   "voice": "2428-83699-0000.flac",
+   "secs": 12.99,
+   "analytic": {
+    "best": 15.935262093803633,
+    "at": 4.168,
+    "heard": 1.792,
+    "wrong": 4.8855280950661095
+   },
+   "learned": {
+    "best": 19.36702654523371,
+    "at": 3.456,
+    "heard": 1.024,
+    "wrong": 4.939457900056043
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 21,
+   "kind": "marked",
+   "voice": "2428-83699-0008.flac",
+   "secs": 12.991,
+   "analytic": {
+    "best": 20.711634765228514,
+    "at": 4.152,
+    "heard": 1.792,
+    "wrong": 4.815815636293968
+   },
+   "learned": {
+    "best": 23.842173877088136,
+    "at": 3.696,
+    "heard": 1.28,
+    "wrong": 4.668875843650897
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 22,
+   "kind": "marked",
+   "voice": "2803-154320-0001.flac",
+   "secs": 12.991,
+   "analytic": {
+    "best": 14.444016620794393,
+    "at": 3.88,
+    "heard": 1.536,
+    "wrong": 5.41842762659963
+   },
+   "learned": {
+    "best": 16.491290750821573,
+    "at": 3.68,
+    "heard": 1.28,
+    "wrong": 5.985564773876601
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 23,
+   "kind": "marked",
+   "voice": "2803-154320-0004.flac",
+   "secs": 12.994,
+   "analytic": {
+    "best": 16.043528914110386,
+    "at": 3.8,
+    "heard": 1.536,
+    "wrong": 4.902396943683807
+   },
+   "learned": {
+    "best": 18.267663481057347,
+    "at": 3.6,
+    "heard": 1.28,
+    "wrong": 4.651791139233187
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 24,
+   "kind": "marked",
+   "voice": "3536-23268-0000.flac",
+   "secs": 12.992,
+   "analytic": {
+    "best": 12.360146625828799,
+    "at": 5.24,
+    "heard": 2.816,
+    "wrong": 4.433292452185332
+   },
+   "learned": {
+    "best": 16.494816873545098,
+    "at": 4.272,
+    "heard": 1.792,
+    "wrong": 4.624547901919497
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 25,
+   "kind": "marked",
+   "voice": "3536-23268-0001.flac",
+   "secs": 12.993,
+   "analytic": {
+    "best": 11.086326437469944,
+    "at": 5.168,
+    "heard": 2.816,
+    "wrong": 4.969270571362477
+   },
+   "learned": {
+    "best": 15.441052416084156,
+    "at": 3.936,
+    "heard": 1.536,
+    "wrong": 4.477735086132381
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 26,
+   "kind": "marked",
+   "voice": "3752-4944-0016.flac",
+   "secs": 12.99,
+   "analytic": {
+    "best": 17.07483578549218,
+    "at": 3.768,
+    "heard": 1.536,
+    "wrong": 4.9055392189752824
+   },
+   "learned": {
+    "best": 20.189878849678426,
+    "at": 3.568,
+    "heard": 1.28,
+    "wrong": 4.599334982734834
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 27,
+   "kind": "marked",
+   "voice": "3752-4944-0020.flac",
+   "secs": 12.991,
+   "analytic": {
+    "best": 11.195576459083137,
+    "at": 4.336,
+    "heard": 2.048,
+    "wrong": 4.8644414677431245
+   },
+   "learned": {
+    "best": 13.156279088405997,
+    "at": 3.888,
+    "heard": 1.536,
+    "wrong": 5.001515851061588
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 28,
+   "kind": "marked",
+   "voice": "5694-64038-0017.flac",
+   "secs": 12.991,
+   "analytic": {
+    "best": 14.326189627104585,
+    "at": 6.072,
+    "heard": 3.584,
+    "wrong": 4.961491061485331
+   },
+   "learned": {
+    "best": 17.98306537725157,
+    "at": 4.08,
+    "heard": 1.536,
+    "wrong": 5.044657443763621
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 29,
+   "kind": "marked",
+   "voice": "5694-64038-0018.flac",
+   "secs": 12.991,
+   "analytic": {
+    "best": 19.62862258876622,
+    "at": 4.08,
+    "heard": 1.792,
+    "wrong": 4.788170854140706
+   },
+   "learned": {
+    "best": 22.351859566370354,
+    "at": 3.376,
+    "heard": 1.024,
+    "wrong": 4.43899860672449
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 30,
+   "kind": "marked",
+   "voice": "6241-61943-0027.flac",
+   "secs": 12.992,
+   "analytic": {
+    "best": 19.09926360093949,
+    "at": 3.552,
+    "heard": 1.28,
+    "wrong": 4.809365741669659
+   },
+   "learned": {
+    "best": 21.706720318637856,
+    "at": 3.36,
+    "heard": 1.024,
+    "wrong": 4.521638931673093
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 31,
+   "kind": "marked",
+   "voice": "6241-61946-0011.flac",
+   "secs": 12.99,
+   "analytic": {
+    "best": 11.141936080459557,
+    "at": 5.24,
+    "heard": 2.816,
+    "wrong": 4.7253568999929385
+   },
+   "learned": {
+    "best": 14.052962812027356,
+    "at": 4.528,
+    "heard": 2.048,
+    "wrong": 4.959648906970536
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 32,
+   "kind": "marked",
+   "voice": "6319-57405-0001.flac",
+   "secs": 12.991,
+   "analytic": {
+    "best": 12.43289458074654,
+    "at": 4.376,
+    "heard": 2.3040000000000003,
+    "wrong": 4.742437070915457
+   },
+   "learned": {
+    "best": 15.706710176688267,
+    "at": 3.408,
+    "heard": 1.28,
+    "wrong": 4.380449646412555
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 33,
+   "kind": "marked",
+   "voice": "6319-57405-0008.flac",
+   "secs": 12.972,
+   "analytic": {
+    "best": 8.389165951923344,
+    "at": 7.848,
+    "heard": 5.632,
+    "wrong": 4.71607290745162
+   },
+   "learned": {
+    "best": 10.85263471506803,
+    "at": 3.808,
+    "heard": 1.536,
+    "wrong": 4.847963585999021
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 34,
+   "kind": "unmarked",
+   "voice": "el_alice.mp3",
+   "secs": 9.99,
+   "analytic": {
+    "best": 3.5638304507422043,
+    "at": null,
+    "heard": null,
+    "wrong": 4.95184428949068
+   },
+   "learned": {
+    "best": 3.354913813443821,
+    "at": null,
+    "heard": null,
+    "wrong": 4.7233065783030534
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 35,
+   "kind": "unmarked",
+   "voice": "el_alisha-hi.mp3",
+   "secs": 10.993,
+   "analytic": {
+    "best": 3.5607533604053523,
+    "at": null,
+    "heard": null,
+    "wrong": 4.4702921003118385
+   },
+   "learned": {
+    "best": 3.5632337068555464,
+    "at": null,
+    "heard": null,
+    "wrong": 4.781404556052774
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 36,
+   "kind": "unmarked",
+   "voice": "el_bill.mp3",
+   "secs": 10.993,
+   "analytic": {
+    "best": 3.9273865709208353,
+    "at": null,
+    "heard": null,
+    "wrong": 4.665587354541619
+   },
+   "learned": {
+    "best": 4.239652409974432,
+    "at": null,
+    "heard": null,
+    "wrong": 4.535868314242298
+   }
+  },
+  {
+   "manifest": "manifest_rev.json",
+   "i": 37,
+   "kind": "unmarked",
+   "voice": "el_brian.mp3",
+   "secs": 9.991,
+   "analytic": {
+    "best": 3.4159022904060814,
+    "at": null,
+    "heard": null,
+    "wrong": 4.658042473249109
+   },
+   "learned": {
+    "best": 3.4115993475422557,
+    "at": null,
+    "heard": null,
+    "wrong": 4.471307920724059
+   }
+  }
+ ]
+}

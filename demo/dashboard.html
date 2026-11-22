@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palabra · Live verification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#090A20;--paper:#ECEEF5;--cobalt:#2A2FD0;--line:#ffffff1f;--dim:#ECEEF599;--ok:#5BE3A4;--warn:#FFB454;--bad:#FF6B6B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:"Bricolage Grotesque",system-ui,sans-serif;min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:baseline;padding:24px clamp(16px,4vw,48px);border-bottom:1px solid var(--line)}
+header b{font-size:22px;font-weight:800;letter-spacing:-.02em}
+header span{color:var(--dim);font-size:14px}
+main{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;padding:32px clamp(16px,4vw,48px);max-width:1280px;margin:auto}
+@media(max-width:860px){main{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:20px;padding:28px;background:#ffffff08}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.route{font-size:clamp(20px,2.6vw,30px);font-weight:600;margin:10px 0 0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.route i{font-style:normal;color:var(--dim);margin:0 .4em}
+.state{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);font-weight:600}
+.state::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
+.state.listening{color:var(--paper)} .state.listening::before{animation:pulse 1s infinite}
+.state.likely{color:var(--warn)} .state.verified{color:var(--ok)} .state.unverified{color:var(--bad)} .state.idle,.state.unregistered{color:var(--dim)}
+@keyframes pulse{50%{opacity:.25}}
+.score{display:flex;align-items:baseline;gap:14px;margin-top:26px}
+.score b{font-size:clamp(72px,11vw,132px);font-weight:800;line-height:.9;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.score span{color:var(--dim);font-size:15px;max-width:16em}
+.bar{position:relative;height:14px;border-radius:7px;background:#ffffff14;margin-top:26px}
+.bar div{height:100%;width:0;border-radius:7px;background:var(--cobalt);transition:width .25s linear,background .3s}
+.bar em{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--paper);opacity:.7}
+.bar em::after{content:attr(data-l);position:absolute;top:24px;left:-40px;width:80px;text-align:center;font:12px "Bricolage Grotesque";color:var(--dim)}
+canvas{width:100%;height:120px;margin-top:44px;display:block}
+.pay{position:relative;min-height:320px}
+.pay h2{font:italic 400 30px/1.15 "Newsreader",serif;margin:14px 0 20px}
+.pay dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px}
+.pay dt{color:var(--dim)} .pay dd{margin:0;overflow-wrap:anywhere}
+.pay .lock{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:28px;color:var(--dim);border-radius:20px;backdrop-filter:blur(2px)}
+.pay.open .lock{display:none} .pay:not(.open) .body{visibility:hidden}
+.pay.open{border-color:var(--ok);animation:reveal .5s ease-out}
+@keyframes reveal{from{transform:translateY(8px);opacity:.3}}
+.log{grid-column:1/-1}
+.log pre{margin:14px 0 0;max-height:260px;overflow:auto;font:12.5px/1.6 ui-monospace,Menlo,monospace;color:#cfd3ff;white-space:pre-wrap;overflow-wrap:anywhere}
+.log pre b{color:var(--paper)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><b>Palabra</b><span>Live verification · demo</span></header>
+<main>
+  <section class="card">
+    <div class="label">Incoming call</div>
+    <p class="route" id="route">Waiting for a call</p>
+    <div class="state idle" id="state">Idle</div>
+    <div class="score"><b id="score">0.0</b><span id="hint">Verification score. A call passes at <span id="tau">7</span>.</span></div>
+    <div class="bar"><div id="fill"></div><em id="mL" data-l="likely"></em><em id="mT" data-l="verified"></em></div>
+    <canvas id="plot" aria-label="Score over time"></canvas>
+  </section>
+  <section class="card pay" id="pay">
+    <div class="label">Call details from the caller</div>
+    <div class="body">
+      <h2 id="purpose"></h2>
+      <dl id="details"></dl>
+    </div>
+    <div class="lock" id="lock">Locked until the call is verified.</div>
+  </section>
+  <section class="card log">
+    <div class="label">Events sent to your webhook</div>
+    <pre id="log"></pre>
+  </section>
+</main>
+<script>
+const $=id=>document.getElementById(id), MAX=14;
+let tau=7, likely=4.5, pts=[], session=null;
+const text={listening:"Listening",likely:"Mark likely present",verified:"Verified",unverified:"Not verified",unregistered:"Ordinary call, nothing registered",idle:"Idle"};
+function setState(s){const e=$("state");e.className="state "+s;e.textContent=text[s]}
+function setScore(z){$("score").textContent=z.toFixed(1);const f=$("fill");f.style.width=Math.min(100,z/MAX*100)+"%";
+  f.style.background=z>=tau?"var(--ok)":z>=likely?"var(--warn)":"var(--cobalt)"}
+function draw(){const c=$("plot"),r=devicePixelRatio||1,w=c.clientWidth,h=c.clientHeight;c.width=w*r;c.height=h*r;
+  const g=c.getContext("2d");g.scale(r,r);g.clearRect(0,0,w,h);
+  const T=Math.max(6,...pts.map(p=>p[0])),y=z=>h-4-Math.min(z,MAX)/MAX*(h-8);
+  g.strokeStyle="#ffffff33";g.setLineDash([4,6]);g.beginPath();g.moveTo(0,y(tau));g.lineTo(w,y(tau));g.stroke();g.setLineDash([]);
+  if(pts.length<2)return;g.strokeStyle="#8f93ff";g.lineWidth=2.5;g.lineJoin="round";g.beginPath();
+  pts.forEach((p,i)=>g[i?"lineTo":"moveTo"](p[0]/T*w,y(p[1])));g.stroke()}
+function reset(e){session=e.session;pts=[];setScore(0);$("pay").classList.remove("open");$("lock").textContent="Locked until the call is verified.";
+  $("route").innerHTML=e.caller+"<i>→</i>"+e.callee;draw()}
+function row(k,v){const dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=k;
+  dd.textContent=typeof v=="object"?JSON.stringify(v):v;$("details").append(dt,dd)}
+function handle(e){
+  const line=document.createElement("div"),b=document.createElement("b");b.textContent=e.type;
+  const rest=Object.assign({},e);delete rest.type;delete rest.at;line.append(b," "+JSON.stringify(rest));
+  if(e.type!="call.score"){$("log").prepend(line)}
+  if(e.type=="call.listening"){reset(e);setState("listening")}
+  if(e.type=="call.unregistered"){reset(e);setState("unregistered");$("lock").textContent="No call was registered for this number, so there is nothing to verify."}
+  if(e.session!==session)return;
+  if("score" in e&&"t" in e){pts.push([e.t,e.score]);setScore(e.score);draw()}
+  if(e.type=="call.likely")setState("likely");
+  if(e.type=="call.unverified"){setState("unverified");$("lock").textContent=e.reason=="ended"?"The call ended before the mark could be confirmed.":"This number registered a call, but the audio does not carry its mark. The caller ID may be spoofed."}
+  if(e.type=="call.verified"){setState("verified");$("purpose").textContent=e.purpose||"";$("details").textContent="";
+    const s=e.speaks_for||{};row("Speaks for",s.name);row("Verified by",s.verified_by+" ("+s.method+")");row("Assurance",s.assurance);
+    Object.entries(e.data||{}).forEach(([k,v])=>row(k,Array.isArray(v)?v.join(" · "):v));
+    row("Verified after",e.heard.toFixed(1)+" s of speech");$("pay").classList.add("open")}
+}
+fetch("/v1/config").then(r=>r.json()).then(c=>{tau=c.tau;likely=c.likely;$("tau").textContent=tau;
+  $("mL").style.left=likely/MAX*100+"%";$("mT").style.left=tau/MAX*100+"%";draw()});
+new EventSource("/v1/events").onmessage=m=>handle(JSON.parse(m.data));
+addEventListener("resize",draw);
+</script>
+</body>
+</html>

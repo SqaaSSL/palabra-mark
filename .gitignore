@@ -1,0 +1,20 @@
+.DS_Store
+__pycache__/
+.venv/
+.env
+.env.*
+
+# downloaded speech, scratch files and locally built codecs
+research/data/
+research/tmp/
+research/codecs/
+# training set of the learned detector (580 MB); rebuilt by research/ml_data.py
+research/results/ml_train*.npz
+# inputs of the streaming learned detector's evaluation (105 MB); rebuilt by research/ml_eval3_export.py
+research/results/ml_test3.npz
+
+# outputs and call recordings
+poc/out/
+demo/out/
+demo/rec/
+paper/tex-build/

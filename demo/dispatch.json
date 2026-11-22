@@ -1,0 +1,2 @@
+{"dispatch_rule": {"name": "palabra-demo", "rule": {"dispatchRuleIndividual": {"roomPrefix": "palabra-"}},
+  "roomConfig": {"agents": [{"agentName": "palabra-tap"}]}}}
