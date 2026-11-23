@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-label="Palabra Mark">
+  <rect width="1200" height="300" fill="#2A2FD0"/>
+  <clipPath id="c"><rect width="1200" height="300"/></clipPath>
+  <g clip-path="url(#c)"><g fill="none" stroke="#6F77FA" stroke-width="3.6" stroke-linecap="round" transform="translate(880 -40) scale(5.6)">
+    <path d="M27.24 36.25A5.5 6.5 0 1 1 36.21 37.18"/><path d="M26.25 44.69A11.5 13.5 0 1 1 38.60 44.06" stroke-width="3.6"/>
+    <path d="M19.63 47.50A17.5 20.5 0 1 1 49.12 37.26" stroke-width="3.6"/><path d="M46.84 43.86A17.5 20.5 0 0 1 41.27 50.38" stroke-width="3.6"/>
+    <path d="M13.5 52A24 28 0 1 1 55 44" stroke-width="3.6"/><path d="M8 57A30.5 35.5 0 1 1 61 50" stroke-width="3.6"/>
+  </g></g>
+  <g fill="#F6F7FE" transform="translate(80 96)">
+    <rect width="27" height="27"/><rect x="33" y="33" width="27" height="27"/><rect x="33" width="27" height="27" opacity=".38"/><rect y="33" width="27" height="27" opacity=".38"/>
+    <text x="80" y="50" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="700" font-size="64" letter-spacing="-3">palabra mark</text>
+  </g>
+  <text x="80" y="222" fill="#C9CDFF" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="30">“You have my word.” Verified identity for AI phone calls.</text>
+</svg>
