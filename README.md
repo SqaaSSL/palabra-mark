@@ -93,9 +93,22 @@ No audio is published here, and none is needed: the training sets are built from
 The detectors were trained on English read speech; other languages have not been measured. They detect this mark and nothing else.
 A detector cannot make a mark pass: verification needs the code of the call, which only the registry gives out.
 
+## Acknowledgements
+
+We thank Rajnish Kumar for the inspiration in product and AI.
+
+This work builds on, or is measured against, the following projects. We thank their authors for sharing them.
+
+- **LibriSpeech**, the speech used for training and testing: https://www.openslr.org/12
+- **AudioSeal**, the neural watermark we compare against: https://github.com/facebookresearch/audioseal
+- **FFmpeg**, which runs the speech codecs of the simulated phone lines: https://ffmpeg.org
+- **VisualOn AMR-WB encoder** and the **3GPP EVS reference codec**, for the wideband mobile lines: https://sourceforge.net/projects/opencore-amr/ and https://www.3gpp.org
+- **pesq**, the ITU-T P.862 quality measure: https://github.com/ludlows/PESQ
+- **PyTorch**, **NumPy** and **SciPy**
+
 ## Citing
 
-The paper is archived on Zenodo: [doi:10.5281/zenodo.24469329](https://doi.org/10.5281/zenodo.24469329).
+If you find this work useful, please cite it. The paper is archived on Zenodo: [doi:10.5281/zenodo.24469329](https://doi.org/10.5281/zenodo.24469329).
 
     @misc{palabramark2026,
       title  = {Palabra Mark: binding an AI agent's phone call to its registered intent with a keyed, zero-bit audio mark},
