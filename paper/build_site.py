@@ -61,7 +61,7 @@ page = f"""<!doctype html>
     <nav class="nav" aria-label="Main">
       {"".join(f'<a class="opt" href="{h}"' + (' aria-current="page"' if h == "/paper/" else "") + f'>{n}</a>' for h, n in LINKS)}
       <details class="menu"><summary>Menu</summary><div>{"".join(f'<a href="{h}">{n}</a>' for h, n in LINKS)}<a href="/#talk">Talk to us</a></div></details>
-      <a class="btn sm" href="/app/">Get API keys</a>
+      <a class="btn sm" href="/app/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#key"/></svg>Get API keys</a>
     </nav>
   </div>
 </header>
@@ -69,7 +69,7 @@ page = f"""<!doctype html>
   <div class="wrap top">
     <h1>{title}</h1>
     <p class="who">Ernesto Cohnen de la Cámara, Francisco Novella Fletcher, José Miguel Ávila Gómez, Carlos Tomás Ferrer<small>SqaaS (Squad as a Service SL), Madrid · ixigo · contact@sqaas.io · 22 November 2026</small></p>
-    <div class="acts"><a class="btn" href="/paper/palabra-mark.pdf">Download the PDF</a><a class="btn line" href="/showcase/">Try it live</a></div>
+    <div class="acts"><a class="btn" href="/paper/palabra-mark.pdf"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#download"/></svg>Download the PDF</a><a class="btn line" href="/showcase/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#scope"/></svg>Try it live</a></div>
   </div>
   <div class="wrap doc" style="border-top:1px solid var(--rule)">
     <nav class="toc" aria-label="Sections"><p class="label">Sections</p>{toc}</nav>
@@ -81,12 +81,13 @@ page = f"""<!doctype html>
 <footer class="foot">
   <div class="wrap">
     <div class="cols">
-      <div><a class="brand" href="/">palabra</a><p style="margin-top:.8rem;max-width:24rem">Verified identity for AI voice-agent calls. A project of <a href="https://sqaas.io" rel="noopener" style="text-decoration:underline">SqaaS</a>.</p></div>
-      <div><h2>Product</h2><ul><li><a href="/showcase/">Showcase</a></li><li><a href="/developers/">Developers</a></li><li><a href="/app/">Console</a></li></ul></div>
-      <div><h2>Research</h2><ul><li><a href="/paper/">Paper</a></li><li><a href="/paper/palabra-mark.pdf">PDF</a></li><li><a href="/#measured">Measurements</a></li></ul></div>
-      <div><h2>Company</h2><ul><li><a href="/#talk">Talk to us</a></li><li><a href="mailto:contact@sqaas.io">contact@sqaas.io</a></li><li><a href="https://www.linkedin.com/company/sqaas" rel="noopener">LinkedIn</a></li></ul></div>
+      <div><a class="brand" href="/" aria-label="Palabra, home"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><rect width="9" height="9"/><rect x="11" y="11" width="9" height="9"/><rect x="11" width="9" height="9" opacity=".38"/><rect y="11" width="9" height="9" opacity=".38"/></svg>palabra</a><p class="tag">Verified identity for AI voice-agent calls.</p>
+        <a class="by" href="https://sqaas.io" rel="noopener"><span>A project of</span><img src="/assets/sqaas.svg" alt="SqaaS" width="96" height="32" loading="lazy"></a></div>
+      <div><h2>Product</h2><ul><li><a href="/showcase/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#scope"/></svg>Showcase</a></li><li><a href="/developers/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#code"/></svg>Developers</a></li><li><a href="/app/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#console"/></svg>Console</a></li></ul></div>
+      <div><h2>Research</h2><ul><li><a href="/paper/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#doc"/></svg>Paper</a></li><li><a href="/paper/palabra-mark.pdf"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#download"/></svg>PDF</a></li><li><a href="/#measured"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#chart"/></svg>Measurements</a></li></ul></div>
+      <div><h2>Company</h2><ul><li><a href="/#talk"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#chat"/></svg>Talk to us</a></li><li><a href="mailto:contact@sqaas.io"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#mail"/></svg>contact@sqaas.io</a></li><li><a href="https://www.linkedin.com/company/sqaas" rel="noopener"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#linkedin"/></svg>LinkedIn</a></li></ul></div>
     </div>
-    <p class="fine"><span>© 2026 Squad as a Service SL · Spain, remote first</span><span><a href="https://sqaas.io/privacy" rel="noopener">Privacy</a> · <a href="https://sqaas.io/terms" rel="noopener">Terms</a></span></p>
+    <p class="fine"><span>© <span data-year>2026</span> Squad as a Service, S.L. · Madrid, Spain</span><span class="legal"><a href="/privacy/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#eye"/></svg>Privacy</a><a href="/terms/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#scale"/></svg>Terms</a></span></p>
   </div>
 </footer>
 <script src="/assets/palabra.js" defer></script>
