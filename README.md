@@ -4,6 +4,7 @@
   <a href="https://palabra.ae">Website</a> ·
   <a href="https://palabra.ae/paper/">Paper (web)</a> ·
   <a href="paper/palabra-mark-latex.pdf">Paper (PDF)</a> ·
+  <a href="https://doi.org/10.5281/zenodo.24469329">DOI</a> ·
   <a href="https://palabra.ae/showcase/">Live demo</a> ·
   <a href="https://palabra.ae/developers/">API</a>
 </p>
@@ -94,10 +95,15 @@ A detector cannot make a mark pass: verification needs the code of the call, whi
 
 ## Citing
 
+The paper is archived on Zenodo: [doi:10.5281/zenodo.24469329](https://doi.org/10.5281/zenodo.24469329).
+
     @misc{palabramark2026,
       title  = {Palabra Mark: binding an AI agent's phone call to its registered intent with a keyed, zero-bit audio mark},
       author = {Cohnen de la C\'amara, Ernesto and Novella Fletcher, Francisco and \'Avila G\'omez, Jos\'e Miguel and Tom\'as Ferrer, Carlos},
       year   = {2026},
+      publisher = {Zenodo},
+      doi    = {10.5281/zenodo.24469329},
+      url    = {https://doi.org/10.5281/zenodo.24469329},
       note   = {https://palabra.ae/paper/}
     }
 

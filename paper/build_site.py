@@ -50,7 +50,7 @@ page = f"""<!doctype html>
 <meta name="citation_title" content="{title}">
 <meta name="citation_author" content="Ernesto Cohnen de la Cámara"><meta name="citation_author" content="Francisco Novella Fletcher">
 <meta name="citation_author" content="José Miguel Ávila Gómez"><meta name="citation_author" content="Carlos Tomás Ferrer">
-<meta name="citation_publication_date" content="2026/11/22"><meta name="citation_pdf_url" content="https://palabra.ae/paper/palabra-mark.pdf">
+<meta name="citation_publication_date" content="2026/11/22"><meta name="citation_pdf_url" content="https://palabra.ae/paper/palabra-mark.pdf"><meta name="citation_doi" content="10.5281/zenodo.24469329">
 <meta property="og:title" content="Paper · Palabra"><meta property="og:description" content="{title}"><meta property="og:image" content="https://palabra.ae/og.png">
 <meta name="theme-color" content="#2A2FD0">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -97,7 +97,7 @@ page = f"""<!doctype html>
 <main id="main">
   <div class="wrap top">
     <h1>{title}</h1>
-    <p class="who">Ernesto Cohnen de la Cámara, Francisco Novella Fletcher, José Miguel Ávila Gómez, Carlos Tomás Ferrer<small>SqaaS (Squad as a Service SL), Madrid · ixigo · contact@sqaas.io · 22 November 2026</small></p>
+    <p class="who">Ernesto Cohnen de la Cámara, Francisco Novella Fletcher, José Miguel Ávila Gómez, Carlos Tomás Ferrer<small>SqaaS (Squad as a Service SL), Madrid · ixigo · contact@sqaas.io · 22 November 2026 · <a href="https://doi.org/10.5281/zenodo.24469329">doi:10.5281/zenodo.24469329</a></small></p>
     <div class="acts"><a class="btn" href="/paper/palabra-mark.pdf"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#download"/></svg>Download the PDF</a><a class="btn line" href="/showcase/"><svg class="ic" aria-hidden="true"><use href="/assets/icons.svg#scope"/></svg>Try it live</a></div>
   </div>
   <div class="wrap doc" style="border-top:1px solid var(--rule)">
