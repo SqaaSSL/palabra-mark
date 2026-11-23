@@ -21,7 +21,7 @@ plain = {"×": "x", "τ": "tau", "→": "->", "←": "<-", "−": "-", "ᵢ": "_
 body = "".join(re.sub("[" + "".join(plain) + "]", lambda m: plain[m.group()], p) if i % 2 else tex_chars(p) for i, p in enumerate(parts))
 
 open("_body.md", "w", encoding="utf8").write(body)
-tex = subprocess.run(["pandoc", "_body.md", "-f", "markdown-auto_identifiers-implicit_figures", "-t", "latex", "--number-sections", "--shift-heading-level-by=-1"], capture_output=True, text=True, check=True).stdout
+tex = subprocess.run(["pandoc", "_body.md", "-f", "markdown-auto_identifiers-implicit_figures", "-t", "latex", "--wrap=none", "--number-sections", "--shift-heading-level-by=-1"], capture_output=True, text=True, check=True).stdout
 os.remove("_body.md")
 tex = re.sub(r"(?ms)^(\\textbf\{(?:Table|Figure) \d+\..*?)\n\n", r"\\needspace{7\\baselineskip}\\begin{center}\\small \1\\end{center}\n\n", tex)   # captions, kept on the page of what they describe
 tex = tex.replace(r"\pandocbounded{\includegraphics", r"\begin{center}\pandocbounded{\includegraphics").replace(".png}}", ".png}}\\end{center}")
@@ -38,11 +38,34 @@ def eq(m):
     return "\\[" + hit[0] + "\\]" if hit else m.group(0)
 tex = re.sub(r"\\begin\{Verbatim\}\[[^\]]*\]\n(.*?)\n\\end\{Verbatim\}", eq, tex, flags=re.S)
 tex = tex.replace(r"\section{References}", r"\section*{References}\small\raggedright")
+# cross-references: sections, tables, figures and citations become links inside the PDF, as is usual in arXiv papers
+main, cut, refs = tex.partition(r"\section*{References}")
+sec = [0, 0]; labels = set()
+def heading(m):
+    if m.group(1) == "section": sec[0] += 1; sec[1] = 0; n = str(sec[0])
+    else: sec[1] += 1; n = f"{sec[0]}-{sec[1]}"
+    labels.add("s-" + n); return m.group(0) + "\\label{s-" + n + "}"
+main = re.sub(r"^\\(section|subsection)\{.*\}$", heading, main, flags=re.M)
+def caption(m):
+    k = ("t-" if m.group(2) == "Table" else "f-") + m.group(3); labels.add(k)
+    return "\\phantomsection\\label{" + k + "}" + m.group(1) + m.group(2)[0] + "\0" + m.group(2)[1:] + " " + m.group(3) + "."      # the NUL keeps a caption from linking to itself
+main = re.sub(r"(\\textbf\{|\\emph\{)(Table|Figure) (\d+)\.", caption, main)
+NUM = r"\d+(?:\.\d+)*"
+def mentions(word, prefix):
+    one = lambda n: "\\hyperref[%s]{%s}" % (prefix + n.group().replace(".", "-"), n.group()) if prefix + n.group().replace(".", "-") in labels else n.group()
+    return lambda m: m.group(1) + re.sub(NUM, one, m.group(2))
+for word, prefix in (("Section", "s-"), ("Table", "t-"), ("Figure", "f-")):
+    main = re.sub(r"\b(%ss? )(%s(?:(?:, | and | to )%s)*)" % (word, NUM, NUM), mentions(word, prefix), main)
+main = main.replace("\0", "")
+main = re.sub(r"\{\[\}(\d+(?:, \d+)*)\{\]\}", lambda m: "{[}" + re.sub(r"\d+", lambda n: "\\hyperlink{ref-%s}{%s}" % (n.group(), n.group()), m.group(1)) + "{]}", main)
+refs = re.sub(r"^\{\[\}(\d+)\{\]\} ", lambda m: "\\hypertarget{ref-%s}{{[}%s{]}} " % (m.group(1), m.group(1)), refs, flags=re.M)
+tex = main + cut + refs
 abs_tex = subprocess.run(["pandoc", "-f", "markdown", "-t", "latex"], input=tex_chars(abstract), capture_output=True, text=True, check=True).stdout
 doc = r"""\documentclass[10pt,a4paper]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{fontspec,amsmath,amssymb,graphicx,longtable,booktabs,array,calc,microtype,xurl,fvextra,needspace}
-\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}\definecolor{linkblue}{RGB}{28,36,150}
+\usepackage[colorlinks=true,allcolors=linkblue]{hyperref}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \makeatletter\newsavebox\pandoc@box
 \newcommand*\pandocbounded[1]{\sbox\pandoc@box{#1}\Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}\Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}\ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi\ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}\else\usebox{\pandoc@box}\fi}

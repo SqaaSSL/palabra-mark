@@ -11,6 +11,30 @@ def anchor(m):                                                               # "
 body = re.sub(r"<h([23])>(.*?)</h\1>", anchor, body)
 body = body.replace("<h2>Abstract</h2>", '<h2 id="abstract">Abstract</h2>').replace("<h2>References</h2>", '<h2 id="references">References</h2>')
 short = lambda n: re.sub(r"^(\d+)\. ", lambda m: m.group(1) + " · ", n)
+def crossref(body):
+    """Makes every "Section 6.13", "Table 14", "Figure 5" and "[24]" in the text a link to what it names."""
+    head, sep, refs = body.partition('<h2 id="references">')
+    head = re.sub(r'<p class="cap"><strong>Table (\d+)\.', r'<p class="cap" id="t-\1"><strong>Table \1.', head)
+    head = re.sub(r'<p><em>Figure (\d+)\.', r'<p class="cap" id="f-\1"><em>Figure \1.', head)
+    refs = re.sub(r'<p>\[(\d+)\] ', r'<p id="ref-\1">[\1] ', refs)
+    ids = set(re.findall(r'id="([^"]+)"', head + refs)); NUM = r"\d+(?:\.\d+)*"
+    def nums(prefix, cls):
+        def one(n): i = prefix + n.group().replace(".", "-"); return f'<a class="{cls}" href="#{i}">{n.group()}</a>' if i in ids else n.group()
+        return lambda m: m.group(1) + re.sub(NUM, one, m.group(2))
+    def text(s):
+        for word, prefix in (("Section", "s-"), ("Table", "t-"), ("Figure", "f-")):
+            s = re.sub(r"\b(%ss? )(%s(?:(?:, | and | to )%s)*)" % (word, NUM, NUM), nums(prefix, "x"), s)
+        return re.sub(r"(\[)(\d+(?:, \d+)*)(?=\])", nums("ref-", "c"), s)
+    out, skip, prev = [], 0, ""
+    for part in re.split(r"(<[^>]+>)", head):
+        if part.startswith("<"):
+            name = re.match(r"</?(\w+)", part).group(1)
+            if name in ("pre", "code", "h2", "h3", "a"): skip += -1 if part[1] == "/" else 1
+            prev = part; out.append(part); continue
+        own = re.match(r"(Table|Figure) \d+\. ", part) if prev in ("<strong>", "<em>") else None     # a caption does not link to itself
+        out.append(part if skip else (own.group(0) + text(part[own.end():]) if own else text(part))); prev = ""
+    return "".join(out) + sep + refs
+body = crossref(body)
 toc = "".join('<a href="#' + i + '">' + short(n) + "</a>" for i, n in re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body))
 shutil.copy(os.path.join(here, "palabra-mark-latex.pdf"), os.path.join(out, "palabra-mark.pdf"))
 for f in os.listdir(os.path.join(here, "figures")): shutil.copy(os.path.join(here, "figures", f), os.path.join(out, "figures", f))
@@ -51,6 +75,11 @@ page = f"""<!doctype html>
 .longread img{{margin:1.2rem 0 .4rem;border:1px solid var(--rule)}}
 .longread em{{color:var(--soft)}}
 .longread a{{font-weight:400}}
+.longread a.x{{color:inherit;text-decoration:underline;text-decoration-color:var(--ridge);text-decoration-thickness:1.5px;text-underline-offset:.2em}}
+.longread a.x:hover{{color:var(--cobalt)}}
+.longread a.c{{color:var(--cobalt);text-decoration:none;font-family:var(--display);font-size:.9em}}
+.longread a.c:hover{{text-decoration:underline}}
+.longread p:target{{background:oklch(0.9 0.05 275);box-shadow:0 0 0 .4rem oklch(0.9 0.05 275)}}
 </style>
 </head>
 <body>
