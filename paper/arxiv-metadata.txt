@@ -32,7 +32,7 @@ Mean PESQ-WB was 4.44, and four listeners reported no artefacts on more than 50
 calls.
 
 Comments:
-17 pages, 5 figures, 13 tables. Code and data: https://github.com/sqaas/palabra-mark
+17 pages, 5 figures, 13 tables. Code and data: https://github.com/SqaaSSL/palabra-mark
 
 Suggested categories:
 cs.CR (primary), cs.SD, eess.AS

@@ -480,7 +480,7 @@ The mark already verifies a live call in one to two seconds, with a detector tha
 
 ## 10. Code and data availability
 
-The engine, every experiment script, the result files behind each table and figure, the audio examples and the source of this paper are at `https://github.com/sqaas/palabra-mark`.
+The engine, every experiment script, the result files behind each table and figure, the audio examples and the source of this paper are at `https://github.com/SqaaSSL/palabra-mark`.
 
 | Path | Contents |
 |---|---|
