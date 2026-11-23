@@ -476,7 +476,7 @@ The mark already verifies a live call in one to two seconds, with a detector tha
 
 **A faster mark.** The learned detector cut the time to verify by 40% and more with the embedder untouched, in a causal form cheap enough to run beside every call, and the gain held on live calls (Section 6.13). A larger batch of live calls, with human recordings and other routes, comes first. Training the embedder with it, with the codecs in the loop [24], and embedding inside the speech generator instead of after it, should give more. For the lowest bitrates a second carrier on pitch [15] can be fused with the first, and an anytime-valid sequential test [19, 25] would lower the pass mark for the same guarantee.
 
-**From the greeting to the whole call.** Section 6.11 shows that a marked call can be checked continuously. A nonce issued by the answering side when the call connects would turn that into proof of liveness, and telling the calling agent about every verification would expose a code used by anyone else. Looking registrations up by destination and time would cover calls whose caller ID is withheld.
+**From the greeting to the whole call.** Section 6.11 shows that a marked call can be checked continuously. A nonce issued by the answering side when the call connects would turn that into proof of liveness, and would also close the case of a recording that arrives before the genuine call. The service already tells the calling organisation each time its code is verified or heard again, which exposes a code used by anyone else. Looking registrations up by destination and time would cover calls whose caller ID is withheld.
 
 ## 10. Code and data availability
 

@@ -7,7 +7,7 @@ Palabra Mark: binding an AI agent's phone call to its registered intent with a k
 Authors:
 Ernesto Cohnen de la C\'amara, Francisco Novella Fletcher, Jos\'e Miguel \'Avila G\'omez, Carlos Tom\'as Ferrer
 
-Abstract (1648 characters; the limit is 1920):
+Abstract (1808 characters; the limit is 1920; shortened from the paper's abstract):
 AI voice agents now place phone calls on behalf of people, and nothing in a call
 lets the answering side check who the agent speaks for: caller ID can be spoofed
 and a voice can be cloned. In Palabra the caller registers a signed call intent
@@ -15,27 +15,29 @@ before dialling, and the speech of the call carries a near-inaudible mark
 derived from a per-call secret. The receiver looks the intent up and asks one
 question of the audio: does it carry this call's code? The mark is therefore a
 zero-bit watermark, and the answer is a score that grows as the caller talks.
-The mark adds no signal. It shifts the loudness of 32 ms by 190 Hz tiles of the
-voice by up to 5 dB in a keyed checkerboard, changing only what speech codecs
-keep. At a pass mark where the false-alarm probability per wrong code is
-provably below 1.1e-7, it was verified within 5 seconds on every held-out
-recording through AMR 12.2, AMR-WB 12.65 and Opus 12 kbit/s, and within 3
-seconds through G.711. The hardest lines (AMR 4.75, Opus 6 kbit/s) needed 5 to 8
-seconds and missed 8% of calls. No wrong code passed in more than 400,000
-trials. A small neural network in the detector, which never sees the code and so
-cannot weaken the bound, cuts the time to verify by about a third. AudioSeal, a
-leading neural watermark, fails on most of the same calls below about 8 kbit/s.
-A streaming detector that never delays the call verified all 82 marked greetings
-on live calls over the public phone network, 76 of them within 3 seconds, and
-rejected unmarked greetings, marks registered by another caller and replays.
+The mark shifts the loudness of 32 ms by 190 Hz tiles of the voice by up to 5 dB
+in a keyed checkerboard, changing only what speech codecs keep. At a pass mark
+where the false-alarm probability per wrong code is provably below 1.1e-7, it
+was verified within 5 seconds on every held-out recording through AMR 12.2, AMR-
+WB 12.65 and Opus 12 kbit/s, and within 3 seconds through G.711. The hardest
+lines (AMR 4.75, Opus 6 kbit/s) needed 5 to 8 seconds and missed 8% of calls. No
+wrong code passed in more than 400,000 trials. A small neural network in the
+detector, which never sees the code and so cannot weaken the bound, cuts the
+median time to verify by about 40%; it runs as the call arrives and uses no
+audio from the future. AudioSeal, a leading neural watermark, fails on most of
+the same calls below about 8 kbit/s. A streaming detector that never delays the
+call verified all 82 marked greetings on live calls over the public phone
+network, 76 of them within 3 seconds, and rejected unmarked greetings, marks
+registered by another caller and replays. With the network deployed, all 14
+marked greetings on new live calls were verified within 1.3 seconds of speech.
 Mean PESQ-WB was 4.44, and four listeners reported no artefacts on more than 50
 calls.
 
 Comments:
-17 pages, 5 figures, 13 tables. Code and data: https://github.com/SqaaSSL/palabra-mark
+19 pages, 5 figures, 16 tables. Code and data: https://github.com/SqaaSSL/palabra-mark
 
 Suggested categories:
 cs.CR (primary), cs.SD, eess.AS
 
 Licence:
-CC BY 4.0 is the usual choice when the code is MIT.
+CC BY 4.0.
