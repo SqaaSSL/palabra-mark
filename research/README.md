@@ -37,6 +37,7 @@ Run scripts from this folder with `.venv/bin/python <script>`.
 | Table 13 (learned detector on AMR-WB and EVS) | `ml_eval_wb.py` | `ml_eval_wb.json` |
 | Tables 14 and 15 (streaming learned detector) | `ml_feat.py`, `ml_data3.py`, `ml_train3.py`, `ml_eval3_export.py`, `ml_eval3.py` | `votenet3_*.pt`, `ml_eval3_p1.json`, `ml_eval3_p2.json` |
 | Table 16 (streaming learned detector on the live calls) | `ml_stream.py` | `live_learned.json` |
+| Section 6.13, new live calls with the deployed network | `test/phone.ts` of the service (not in this repository) | `live_learned_calls.jsonl` |
 | Not in the paper: streaming marker against the file embedder | `eval_marker.py` | `marker.json` |
 | Not in the paper: second learned detector, trained on narrowband and wideband lines on a rented GPU | `ml_data2.py`, `ml_train2.py`, `ml_eval2.py` | `votenet2.pt`, `ml_eval2.json` |
 | Section 7 and Figure 5 (design sweeps) | `sweep_design.py`, `sweep2.py`, `eval_gain.py`, `train_filter.py` | `sweep_design.json`, `sweep2.json`, `eval_gain.json`, `kernel.json` |

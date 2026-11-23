@@ -37,13 +37,14 @@ the median time to verify by about 40\%; it runs as the call arrives,
 uses no audio from the future, and costs 3 ms of processor time per
 second of audio. On the audio of the live calls it verified 78 of 82
 marked greetings with at most 2 seconds of speech, against 56 without
-it. AudioSeal, a leading neural watermark, fails on most of the same
-calls below about 8 kbit/s. A streaming detector that never delays the
-call verified all 82 marked greetings on live calls over the public
-phone network, 76 of them within 3 seconds, and rejected unmarked
-greetings, marks registered by another caller and replays. Mean PESQ-WB
-was 4.44, and four listeners reported no artefacts on more than 50
-calls.
+it, and with the network deployed all 14 marked greetings on new live
+calls were verified, each within 1.3 seconds of speech. AudioSeal, a
+leading neural watermark, fails on most of the same calls below about 8
+kbit/s. A streaming detector that never delays the call verified all 82
+marked greetings on live calls over the public phone network, 76 of them
+within 3 seconds, and rejected unmarked greetings, marks registered by
+another caller and replays. Mean PESQ-WB was 4.44, and four listeners
+reported no artefacts on more than 50 calls.
 
 \end{abstract}
 \section{The problem}
@@ -1235,9 +1236,18 @@ and about 100 lines of TypeScript with no dependencies), where it
 replaces the analytic votes. Its votes agree with the PyTorch model to
 within 0.00002, it runs once per call however many registrations the
 call is checked against, and it uses about 40 ms of processor time per
-second of audio in JavaScript. This test replays what the live calls
-delivered; new calls placed with the network in the loop are the next
-step.
+second of audio in JavaScript.
+
+\textbf{New live calls.} Table 16 replays what earlier calls delivered.
+We then placed 18 new calls over the public phone network with the
+network deciding, in the set-up of the second batch of Section 6.9: the
+agent side spoke a greeting marked by the service, and Twilio streamed
+what it received to the deployed detector. All 14 marked greetings, one
+per agent voice, were verified, after 0.77 to 1.28 s of speech (median
+1.02 s). None of 4 unmarked greetings on registered calls was verified;
+their highest score was 4.04. The audio of these calls was not recorded,
+so they cannot be scored again with the analytic votes; their scores are
+in \texttt{live\_learned\_calls.jsonl}.
 
 \section{What shaped the design}
 
@@ -1281,6 +1291,7 @@ audible change.}
 \item
   \textbf{Mostly simulated lines.} Tables 2 to 8 and 11 to 15 use
   software codecs on files, and Table 16 replays recorded calls. The
+  learned detector was tested live on 18 calls only (Section 6.13). The
   live calls of Section 6.9 are 104 calls between one pair of US numbers
   with greetings of 4 to 8 seconds. Mobile handsets, international
   routes, packet loss, noise suppression and echo cancellation were not
@@ -1333,13 +1344,14 @@ votes per second and shorten the time to verify.
 
 \textbf{A faster mark.} The learned detector cut the time to verify by
 40\% and more with the embedder untouched, in a causal form cheap enough
-to run beside every call, and the gain held on the audio of the live
-calls (Section 6.13). New live calls with the network in the loop come
-first. Training the embedder with it, with the codecs in the loop
-{[}24{]}, and embedding inside the speech generator instead of after it,
-should give more. For the lowest bitrates a second carrier on pitch
-{[}15{]} can be fused with the first, and an anytime-valid sequential
-test {[}19, 25{]} would lower the pass mark for the same guarantee.
+to run beside every call, and the gain held on live calls (Section
+6.13). A larger batch of live calls, with human recordings and other
+routes, comes first. Training the embedder with it, with the codecs in
+the loop {[}24{]}, and embedding inside the speech generator instead of
+after it, should give more. For the lowest bitrates a second carrier on
+pitch {[}15{]} can be fused with the first, and an anytime-valid
+sequential test {[}19, 25{]} would lower the pass mark for the same
+guarantee.
 
 \textbf{From the greeting to the whole call.} Section 6.11 shows that a
 marked call can be checked continuously. A nonce issued by the answering
