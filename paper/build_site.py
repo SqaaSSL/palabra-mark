@@ -6,63 +6,92 @@ title = re.search(r"^# (.+)$", md, re.M).group(1); md = md[md.index("## Abstract
 body = markdown.markdown(md, extensions=["tables", "fenced_code"])
 body = re.sub(r"(\[\d+\] [^\n<]+)\n", r"\1<br>\n", body)
 body = re.sub(r"<p><strong>((?:Table|Figure) \d+\.[^<]*)</strong>([^<]*)</p>", r'<p class="cap"><strong>\1</strong>\2</p>', body)
-body = body.replace("<table>", '<div class="tw"><table>').replace("</table>", "</table></div>")
+def anchor(m):                                                               # "6.9 Live phone calls" gets the id s-6-9
+    num = re.match(r"(\d+(?:\.\d+)*)", m.group(2)); return f'<h{m.group(1)} id="s-{num.group(1).replace(".", "-")}">{m.group(2)}</h{m.group(1)}>' if num else m.group(0)
+body = re.sub(r"<h([23])>(.*?)</h\1>", anchor, body)
+body = body.replace("<h2>Abstract</h2>", '<h2 id="abstract">Abstract</h2>').replace("<h2>References</h2>", '<h2 id="references">References</h2>')
+short = lambda n: re.sub(r"^(\d+)\. ", lambda m: m.group(1) + " · ", n)
+toc = "".join('<a href="#' + i + '">' + short(n) + "</a>" for i, n in re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body))
 shutil.copy(os.path.join(here, "palabra-mark-latex.pdf"), os.path.join(out, "palabra-mark.pdf"))
 for f in os.listdir(os.path.join(here, "figures")): shutil.copy(os.path.join(here, "figures", f), os.path.join(out, "figures", f))
+GLYPH = '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><rect width="9" height="9"/><rect x="11" y="11" width="9" height="9"/><rect x="11" width="9" height="9" opacity=".38"/><rect y="11" width="9" height="9" opacity=".38"/></svg>'
+LINKS = [("/showcase/", "Showcase"), ("/developers/", "Developers"), ("/paper/", "Paper")]
 page = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Palabra Mark · Paper</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Paper · Palabra</title>
 <meta name="description" content="{title}">
 <meta name="citation_title" content="{title}">
 <meta name="citation_author" content="Ernesto Cohnen de la Cámara"><meta name="citation_author" content="Francisco Novella Fletcher">
 <meta name="citation_author" content="José Miguel Ávila Gómez"><meta name="citation_author" content="Carlos Tomás Ferrer">
 <meta name="citation_publication_date" content="2026/11/22"><meta name="citation_pdf_url" content="https://palabra.ae/paper/palabra-mark.pdf">
-<meta property="og:title" content="Palabra Mark · Paper"><meta property="og:description" content="{title}"><meta property="og:image" content="https://palabra.ae/og.png">
+<meta property="og:title" content="Paper · Palabra"><meta property="og:description" content="{title}"><meta property="og:image" content="https://palabra.ae/og.png">
+<meta name="theme-color" content="#2A2FD0">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Martian+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/assets/palabra.css">
 <style>
-:root{{--cobalt:#2A2FD0;--ink:#090A20;--paper:#ECEEF5;--white:#F6F7FE;--ice:#AEB4FF;--dim:#8C92C4;--line:#ffffff1c;--display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--speech:"Newsreader",Georgia,serif}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--ink);color:var(--white);font-family:var(--display);-webkit-font-smoothing:antialiased;overflow-x:clip}}
-.wrap{{max-width:84rem;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px)) 0 max(20px,env(safe-area-inset-right,0px))}}a{{color:inherit}}
-.top{{display:flex;justify-content:space-between;align-items:center;padding:26px 0}}.top .mark{{font-weight:800;font-size:1.5rem;letter-spacing:-.03em;text-decoration:none}}
-.top nav{{display:flex;gap:1.4rem;align-items:center;font-size:.98rem}}.top nav a{{text-decoration:none;color:var(--paper)}}.top nav a[aria-current]{{color:var(--ice)}}
-.top nav .pill{{border:1px solid var(--line);padding:10px 18px;border-radius:99px}}.top nav a{{white-space:nowrap}}@media(max-width:560px){{.top nav .hide,.top nav .pill{{display:none}}}}
-.head{{padding:clamp(28px,5vw,64px) 0 clamp(30px,4vw,52px);max-width:62rem}}
-.head .label{{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}}
-.head h1{{font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.03;letter-spacing:-.035em;font-weight:800;margin:.35em 0 .5em}}
-.head .who{{font-size:1.05rem;color:var(--paper);line-height:1.5}}.head .who small{{display:block;color:var(--dim);font-size:.9rem;margin-top:.3em}}
-.head .go{{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}}.head .go a{{text-decoration:none;font-weight:600;padding:.7em 1.3em;border-radius:99px;border:1px solid var(--line)}}
-.head .go a.main{{background:var(--white);color:var(--ink);border-color:var(--white)}}
-article{{background:var(--paper);color:#12143A;border-radius:26px 26px 0 0;padding:clamp(26px,6vw,80px) clamp(18px,6vw,80px) 80px;font:1.06rem/1.62 var(--speech)}}
-article>*{{max-width:44rem;margin-left:auto;margin-right:auto}}
-article h2{{font:800 1.55rem/1.15 var(--display);letter-spacing:-.02em;margin-top:2.4em;margin-bottom:.5em;color:var(--cobalt)}}article h2:first-child{{margin-top:0}}
-article h3{{font:600 1.12rem/1.25 var(--display);margin-top:1.9em;margin-bottom:.4em}}article p{{margin-top:0;margin-bottom:.9em}}
-article .tw{{max-width:52rem;overflow-x:auto;margin-bottom:1.6em}}article table{{border-collapse:collapse;width:100%;font:.84rem/1.35 var(--display);border-top:1.5px solid #12143A;border-bottom:1.5px solid #12143A}}
-article th{{border-bottom:1px solid #12143A;font-weight:600}}article th,article td{{padding:.4em .7em;text-align:left;vertical-align:top}}article td:not(:first-child){{font-variant-numeric:tabular-nums}}
-article .cap{{font:.86rem/1.4 var(--display);margin-bottom:.4em;margin-top:1.6em}}article pre{{font:.8rem/1.5 ui-monospace,Menlo,monospace;background:#12143A0d;border-radius:10px;padding:14px 16px;white-space:pre-wrap;overflow-wrap:anywhere}}
-article code{{font:.86em ui-monospace,Menlo,monospace}}article img{{max-width:min(100%,52rem);display:block;margin:1.4em auto .5em;border-radius:8px}}article em{{color:#4D527C}}
-article li{{margin-bottom:.4em}}article ul,article ol{{padding-left:1.4em}}
-footer{{background:var(--paper);color:#4D527C;font-size:.85rem;padding:0 clamp(18px,6vw,80px) 44px}}footer p{{max-width:44rem;margin:0 auto;border-top:1px solid #12143A22;padding-top:22px}}
+/* the paper: the site's shell around a long read set in the reading serif */
+.top h1{{font-weight:800;font-size:clamp(1.9rem,4.2vw,3.5rem);line-height:1;letter-spacing:-.045em;max-width:24ch;text-wrap:balance}}
+.who{{margin-top:1.4rem;max-width:46rem}}.who small{{display:block;color:var(--soft);margin-top:.3rem;font-size:.92rem}}
+.longread{{font-family:var(--speech);font-size:1.12rem;line-height:1.62;gap:0}}
+.longread>*{{margin-bottom:1rem}}
+.longread h2,.longread h3,.longread table,.longread .cap,.longread pre,.longread code{{font-family:var(--display)}}
+.longread h2{{margin-bottom:1.1rem}}.longread h3{{margin-top:1.6rem;margin-bottom:.5rem}}
+.longread p,.longread li{{color:oklch(0.25 0.05 278)}}
+.longread table{{font-size:.84rem;line-height:1.35;border-top:2px solid var(--ink);margin-bottom:1.8rem}}
+.longread th{{font-family:var(--display);font-size:.84rem;letter-spacing:0;text-transform:none;font-weight:700;color:var(--ink);border-bottom:1px solid var(--ink)}}
+.longread td{{font-variant-numeric:tabular-nums}}
+.longread .cap{{font-size:.9rem;line-height:1.4;margin-top:1.4rem;margin-bottom:.5rem;color:var(--ink)}}
+.longread pre{{font-family:var(--mono);font-size:.78rem;line-height:1.6;background:oklch(0.91 0.02 275);padding:1rem 1.1rem;white-space:pre-wrap;overflow-wrap:anywhere}}
+.longread pre code{{background:none;padding:0;font-family:inherit}}
+.longread img{{margin:1.2rem 0 .4rem;border:1px solid var(--rule)}}
+.longread em{{color:var(--soft)}}
+.longread a{{font-weight:400}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top"><a class="mark" href="/">Palabra</a>
-    <nav><a class="txt hide" href="/showcase/">Showcase</a><a class="txt hide" href="/developers/">Developers</a><a class="txt" href="/paper/" aria-current="page">Paper</a><a class="pill" href="/app/">Get API keys</a></nav></header>
-  <div class="head">
-    <h1>{title}</h1>
-    <p class="who">Ernesto Cohnen de la Cámara, Francisco Novella Fletcher, José Miguel Ávila Gómez, Carlos Tomás Ferrer<small>SqaaS (Squad as a Service SL), Madrid · ixigo · contact@sqaas.io · 22 November 2026</small></p>
-    <div class="go"><a class="main" href="/paper/palabra-mark.pdf">Download the PDF</a><a href="/showcase/">Try it live</a></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="head paper">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Palabra, home">{GLYPH}palabra</a>
+    <nav class="nav" aria-label="Main">
+      {"".join(f'<a class="opt" href="{h}"' + (' aria-current="page"' if h == "/paper/" else "") + f'>{n}</a>' for h, n in LINKS)}
+      <details class="menu"><summary>Menu</summary><div>{"".join(f'<a href="{h}">{n}</a>' for h, n in LINKS)}<a href="/#talk">Talk to us</a></div></details>
+      <a class="btn sm" href="/app/">Get API keys</a>
+    </nav>
   </div>
-</div>
-<article>
+</header>
+<main id="main">
+  <div class="wrap top">
+    <p class="label" style="color:var(--cobalt);margin-bottom:1.2rem">Research paper · 22 November 2026</p>
+    <h1>{title}</h1>
+    <p class="who">Ernesto Cohnen de la Cámara, Francisco Novella Fletcher, José Miguel Ávila Gómez, Carlos Tomás Ferrer<small>SqaaS (Squad as a Service SL), Madrid · ixigo · contact@sqaas.io</small></p>
+    <div class="acts"><a class="btn" href="/paper/palabra-mark.pdf">Download the PDF</a><a class="btn line" href="/showcase/">Try it live</a></div>
+  </div>
+  <div class="wrap doc" style="border-top:1px solid var(--rule)">
+    <nav class="toc" aria-label="Sections"><p class="label">Sections</p>{toc}</nav>
+    <article class="prose longread">
 {body}
-</article>
-<footer><p>Palabra is a project of <a href="https://sqaas.io" rel="noopener">SqaaS</a>. © 2026 Squad as a Service SL · <a href="https://sqaas.io/privacy" rel="noopener">Privacy</a> · <a href="https://sqaas.io/terms" rel="noopener">Terms</a></p></footer>
+    </article>
+  </div>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand" href="/">palabra</a><p style="margin-top:.8rem;max-width:24rem">Verified identity for AI voice-agent calls. A project of <a href="https://sqaas.io" rel="noopener" style="text-decoration:underline">SqaaS</a>.</p></div>
+      <div><h2>Product</h2><ul><li><a href="/showcase/">Showcase</a></li><li><a href="/developers/">Developers</a></li><li><a href="/app/">Console</a></li></ul></div>
+      <div><h2>Research</h2><ul><li><a href="/paper/">Paper</a></li><li><a href="/paper/palabra-mark.pdf">PDF</a></li><li><a href="/#measured">Measurements</a></li></ul></div>
+      <div><h2>Company</h2><ul><li><a href="/#talk">Talk to us</a></li><li><a href="mailto:contact@sqaas.io">contact@sqaas.io</a></li><li><a href="https://www.linkedin.com/company/sqaas" rel="noopener">LinkedIn</a></li></ul></div>
+    </div>
+    <p class="fine"><span>© 2026 Squad as a Service SL · Spain, remote first</span><span><a href="https://sqaas.io/privacy" rel="noopener">Privacy</a> · <a href="https://sqaas.io/terms" rel="noopener">Terms</a></span></p>
+  </div>
+</footer>
+<script src="/assets/palabra.js" defer></script>
+<script>document.addEventListener("DOMContentLoaded",function(){{Palabra.spy(document.querySelector(".toc"))}})</script>
 </body>
 </html>
 """
