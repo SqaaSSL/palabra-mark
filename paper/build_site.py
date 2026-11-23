@@ -67,9 +67,8 @@ page = f"""<!doctype html>
 </header>
 <main id="main">
   <div class="wrap top">
-    <p class="label" style="color:var(--cobalt);margin-bottom:1.2rem">Research paper · 22 November 2026</p>
     <h1>{title}</h1>
-    <p class="who">Ernesto Cohnen de la Cámara, Francisco Novella Fletcher, José Miguel Ávila Gómez, Carlos Tomás Ferrer<small>SqaaS (Squad as a Service SL), Madrid · ixigo · contact@sqaas.io</small></p>
+    <p class="who">Ernesto Cohnen de la Cámara, Francisco Novella Fletcher, José Miguel Ávila Gómez, Carlos Tomás Ferrer<small>SqaaS (Squad as a Service SL), Madrid · ixigo · contact@sqaas.io · 22 November 2026</small></p>
     <div class="acts"><a class="btn" href="/paper/palabra-mark.pdf">Download the PDF</a><a class="btn line" href="/showcase/">Try it live</a></div>
   </div>
   <div class="wrap doc" style="border-top:1px solid var(--rule)">
