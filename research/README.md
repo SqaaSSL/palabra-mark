@@ -20,6 +20,10 @@ Codecs:
 
 Run scripts from this folder with `.venv/bin/python <script>`.
 
+Phone numbers in the scripts and result files are placeholders (`+999555…`, an unassigned country code). The experiments
+were run with other numbers. A call's code is derived from its numbers, so a rerun draws different codes and its figures
+can differ from the published ones in the last digit.
+
 ## Which script makes which result
 
 | Paper | Script | Result file |
